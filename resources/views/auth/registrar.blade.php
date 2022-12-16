@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login 04</title>
+    <title>Registro de usuario</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/estilos.css">
-
+    <script src="js/bootstrap.min.js"></script>
 </head>
 
 <body style="background: url(img/mar.jpg); background-size:cover; background-repeat:no-repeat;">
@@ -33,61 +33,78 @@
                                     <h3 class="mb-4">Sign In</h3>
                                 </div>
                             </div>
-                            <form action="#" class="signin-form">
+                            <form action="{{ route('auth.registrar') }}" class="signin-form" method="POST">
+                                @csrf
+                                @if (Session::has('errorRegistro'))
+                                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                                        <strong>{{ Session::get('errorRegistro') }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su nombre</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su nombre" required title="Juan " / name="nombre" id="nombre">
+                                    <input type="text" class="form-control" placeholder="Ingrese su nombre" required
+                                        / name="nombre" id="nombre">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su apellido</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su apellido" required title=" perez" / name="apellido" id="apellido">
+                                    <input type="text" class="form-control" placeholder="Ingrese su apellido"
+                                        required / name="apellido" id="apellido">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su correo</label>
-                                    <input type="email" class="form-control" placeholder="Ingrese su correo" required title="example@gmail.com" / name="email" id="email">
+                                    <input type="email" class="form-control" placeholder="example@gmail.com" required
+                                        / name="email" id="email">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese un correo alternativo </label>
-                                    <input type="email" class="form-control" placeholder="Ingrese su correo" title="example@gmail.com" / name="email_alt" id="email_alt">
+                                    <input type="email" class="form-control" placeholder="Ingrese un correo"
+                                        title="Este campo es opcional" / name="email_alt" id="email_alt">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su run</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su rut sin puntos ni guión" required pattern="\d{3,8}-[\d|kK]{1}" title="Debe ser un Rut válido" / name="run" id="run">
+                                    <input type="text" class="form-control" placeholder="123454678-K" required
+                                        pattern="\d{3,8}-[\d|K]{1}" title="Debe ser un Rut válido" / name="run"
+                                        id="run">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" required id="clave" name="clave">
+                                    <input type="password" class="form-control" placeholder="Password" required
+                                        id="clave" name="clave">
                                 </div>
 
                                 <div>
                                     <label for="Frecuencia">Cargo del responsable:</label>
                                     <select class="formbold-form-input" name="cargo" id="cargo" required>
-                                        <option value="1">Jefe de planta</option>
-                                        <option value="2">Encargado de zona</option>
-                                        <option value="3">Administtrador</option>
-                                        <option value="4">Recursos humanos</option>
-                                        <option value="5">Trabajador de planta</option>
+                                        <option value="Jefe de planta">Jefe de planta</option>
+                                        <option value="Encargado de zona">Encargado de zona</option>
+                                        <option value="Administración">Administración</option>
+                                        <option value="Recursos humanos">Recursos humanos</option>
+                                        <option value="Trabajador de planta">Trabajador de planta</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su profesión </label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su profesion"  name="profesion" id="profesion">
+                                    <input type="text" class="form-control" placeholder="Ingrese su profesion"
+                                        name="profesion" id="profesion">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                    <button type="submit"
+                                        class="form-control btn btn-primary rounded submit px-3">Registrar</button>
                                 </div>
                                 <div class="form-group d-md-flex">
                                     <div class="w-50 text-left">
                                     </div>
                                     <div class="w-50 text-md-right">
-                                        <a href="#">Forgot Password</a>
+                                        <a href="{{ route('ingresar.formulario') }}">Ya tengo una cuenta</a>
                                     </div>
                                 </div>
                             </form>
@@ -101,7 +118,6 @@
 
     <script src="js/jquery.min.js"></script>
     <!-- <script src="js/popper.js"></script> -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
     <script src="js/main.js"></script>
 
 </body>

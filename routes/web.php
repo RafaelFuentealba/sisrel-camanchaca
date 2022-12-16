@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AutenticationController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,6 @@ Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->n
 
 Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');
 
-Route::get('registrar', function () {
-    return view('auth/registrar');
+Route::middleware('verificar.admin')->group(function () {
+    Route::get('/', [AdminController::class,'home'])->name('admin.home');
 });

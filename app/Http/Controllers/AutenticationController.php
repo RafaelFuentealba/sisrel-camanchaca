@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
-class AuthenticationController extends Controller
+class AutenticationController extends Controller
 {
 
 
@@ -39,7 +39,7 @@ class AuthenticationController extends Controller
 
         if ($usuario["rous_codigo"] == 1) {
             $request->session()->put('admin', $usuario);
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.home');
 
         } elseif ($usuario["rous_codigo"] == 2) {
             $request->session()->put('digitador', $usuario);
@@ -53,28 +53,28 @@ class AuthenticationController extends Controller
 
     public function registrar()
     {
-        return view('ahut.registrar');
+        return view('auth.registrar');
     }
 
     public function guardarRegistro(Request $request)
     {
         $usuario = Usuarios::create([
-            'usa_rut' => $request->run,
-            'usa_email' => $request->email,
-            'usa_email_alternativo' => $request->email_alt,
+            'usua_rut' => $request->run,
+            'usua_email' => $request->email,
+            'usua_email_alternativo' => $request->email_alt,
             // hash para ocultar la clave
-            'usa_clave' => Hash::make($request->clave),
-            'usa_nombre' => $request->nombre,
-            'usa_apellido' => $request->apellido,
-            'usa_cargo' => $request->cargo,
-            'usa_profesion' => $request->profesion,
-            'usa_creado' => Carbon::now()->toDateString(),
-            'usa_actualizado' => Carbon::now()->toDateString(),
+            'usua_clave' => Hash::make($request->clave),
+            'usua_nombre' => $request->nombre,
+            'usua_apellido' => $request->apellido,
+            'usua_cargo' => $request->cargo,
+            'usua_profesion' => $request->profesion,
+            'usua_creado' => Carbon::now()->toDateString(),
+            'usua_actualizado' => Carbon::now()->toDateString(),
             // estado por defecto A = Activo, S = Suspendido
-            'usa_vigente' => 'A',
-            'usa_usuario_mod' => $request->nombre,
-            'rous_codigo' => $request->rol,
-            'unid_codigo' => $request->unidad,
+            'usua_vigente' => 'A',
+            'usua_usuario_mod' => $request->nombre,
+            'rous_codigo' => 3,
+            'unid_codigo' => 1,
         ]);
         if ($usuario) {
             return redirect()->to('ingresar');

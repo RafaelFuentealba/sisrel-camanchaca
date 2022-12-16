@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Inicio de sesion</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,26 +14,26 @@
 
 </head>
 
-<body style="background: url(images/mar.jpg); background-size:cover; background-repeat:no-repeat;">
+<body style="background: url(img/mar.jpg); background-size:cover; background-repeat:no-repeat;">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <img class="img" src="images/logo_texto.png"></img>
+                    <img class="img" src="img/logo_texto.png"></img>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="wrap d-md-flex">
-                        <div class="img" style="background-image: url(images/camanchaca.png);">
+                        <div class="img" style="background-image: url(img/camanchaca.png);">
                         </div>
                         <div class="login-wrap p-4 p-md-5">
                             <div class="d-flex">
                                 <div class="w-100">
-                                    <h3 class="mb-4">Sign In</h3>
+                                    <h3 class="mb-4">INICIAR SESSION</h3>
                                 </div>
                             </div>
-                            <form action="#" class="signin-form">
+                            <form action="{{route('auth.ingresar')}}" class="signin-form" method="POST">
                                 @csrf
 
                                 @if (Session::has('errorRut'))
@@ -62,10 +62,9 @@
                                 <div class="form-group mb-3">
                                     <label class="label" for="run">Run</label>
                                     <input type="text" class="form-control"
-                                        placeholder="Ingrese su rut sin puntos ni guión" required
-                                        pattern="\d{3,8}-[\d|kK]{1}" title="Debe ser un Rut válido" name="run"
-                                        value="{{ old('run') }}
-                                        id="run" />
+                                        placeholder="Ingrese su rut sin puntos y con guión"
+                                        required pattern="\d{3,8}-[\d|kK]{1}" title="Debe ser un Rut válido"
+                                        name="run" id="run" />
                                 </div>
 
                                 @if ($errors->has('run'))
@@ -77,7 +76,7 @@
                                 @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="clave">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Password" required
+                                    <input type="password" class="form-control" placeholder="Ingrese su contraseña" required
                                         id="clave" name="clave">
                                 </div>
                                 <div class="form-group">
