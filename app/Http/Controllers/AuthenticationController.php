@@ -76,6 +76,11 @@ class AuthenticationController extends Controller
             'rous_codigo' => $request->rol,
             'unid_codigo' => $request->unidad,
         ]);
+        if ($usuario) {
+            return redirect()->to('ingresar');
+        }
+
+        return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
     }
 
     public function cerrarSesion()
