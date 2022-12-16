@@ -20,14 +20,14 @@ class AuthenticationController extends Controller
     public function validarIngreso(Request $request)
     {
         $request->validate([
-            'rut' => 'required',
+            'run' => 'required',
             'clave' => 'required'
         ], [
-                'rut.required' => 'El rut de usuario es incorrecto o no se encuentra registrado',
+                'run.required' => 'El rut de usuario es incorrecto o no se encuentra registrado',
                 'clave.required' => 'La contraseña es incorrecta'
             ]);
 
-        $usuario = Usuarios::where('usua_rut', $request->rut)->first();
+        $usuario = Usuarios::where('usua_rut', $request->run)->first();
         if (!$usuario) {
             return redirect()->back()->with('errorRut', 'El rut de usuario no es correcto o no esta registrado');
         }
@@ -59,7 +59,7 @@ class AuthenticationController extends Controller
     public function guardarRegistro(Request $request)
     {
         $usuario = Usuarios::create([
-            'usa_rut' => $request->rut,
+            'usa_rut' => $request->run,
             'usa_email' => $request->email,
             'usa_email_alternativo' => $request->email_alt,
             // hash para ocultar la clave
@@ -76,6 +76,11 @@ class AuthenticationController extends Controller
             'rous_codigo' => $request->rol,
             'unid_codigo' => $request->unidad,
         ]);
+        if ($usuario) {
+            return redirect()->to('ingresar');
+        }
+
+        return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
     }
 
     public function cerrarSesion()
