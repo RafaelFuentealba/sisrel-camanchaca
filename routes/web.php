@@ -20,3 +20,7 @@ Route::get('registrar', [AutenticationController::class, 'registrar'])->name('re
 Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
 
 Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');
+
+Route::get('registrar', function () {
+    return view('auth/registrar');
+});
