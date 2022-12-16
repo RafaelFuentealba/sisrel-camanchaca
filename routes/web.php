@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('ingresar', [AutenticationController::class, 'ingresar'])->name('ingresar.formulario')->middleware('verificar.sesion');
+Route::post('ingresar', [AutenticationController::class, 'validarIngreso'])->name('auth.ingresar');
+
+Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario')->middleware('verificar.sesion');
+Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+
+Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');

@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class AuthenticationController extends Controller
 {
-    // TODO: Integrar vista de login
+
 
     public function ingresar()
     {
@@ -33,6 +33,21 @@ class AuthenticationController extends Controller
         }
 
         $clave = Hash::check($request->clave, $usuario["usua_clave"]);
+        if (!$clave) {
+            return redirect()->back()->with('errorClave', 'La contraseña es incorrecta')->withInput();
+        }
+
+        if ($usuario["rous_codigo"] == 1) {
+            $request->session()->put('admin', $usuario);
+            return redirect()->route('admin.index');
+
+        } elseif ($usuario["rous_codigo"] == 2) {
+            $request->session()->put('digitador', $usuario);
+            return redirect()->route('editor.index');
+
+        } elseif ($usuario["rous_codigo"] == 3) {
+            $request->session()->put('observador', $usuario);
+        }
 
     }
 
@@ -61,6 +76,22 @@ class AuthenticationController extends Controller
             'rous_codigo' => $request->rol,
             'unid_codigo' => $request->unidad,
         ]);
+    }
+
+    public function cerrarSesion()
+    {
+        if (Session::has('admin')) {
+            Session::forget('admin');
+            return redirect()->to('ingresar')->with('sessionFinalizada', 'Sesion Finalizada');
+        } elseif (Session::has('digitador')) {
+            Session::forget('digitador');
+            return redirect()->to('ingresar')->with('sessionFinalizada', 'Sesion Finalizada');
+        } elseif (Session::has('observador')) {
+            Session::forget('observador');
+            return redirect()->to('ingresar')->with('sessionFinalizada', 'Sesion Finalizada');
+        }
+
+        return redirect()->back();
     }
 
 }
