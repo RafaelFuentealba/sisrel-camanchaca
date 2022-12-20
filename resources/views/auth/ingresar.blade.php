@@ -90,21 +90,21 @@
                                             aria-label="Cerrar"></button>
                                     </div>
                                 @endif
-                                <div class="form-group d-md-flex">
+                                {{-- <div class="form-group d-md-flex">
                                     <div class="w-50 text-left">
                                     </div>
                                     <div class="w-50 text-md-right">
                                         <a href="#">Forgot Password</a>
                                     </div>
                                 </div>
-                                <div class="form-group d-md-flex">
+                                 --}}
+                                 <div class="form-group d-md-flex">
                                     <div class="w-50 text-left">
                                     </div>
                                     <div class="w-50 text-md-right">
                                         <a href="{{ route('registrar.formulario') }}">¿No tienes una cuenta?</a>
                                     </div>
                                 </div>
-
                             </form>
 
                         </div>

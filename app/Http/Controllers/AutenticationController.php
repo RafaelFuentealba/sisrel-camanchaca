@@ -7,6 +7,7 @@ use App\Models\Usuarios;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use DB;
 
 class AutenticationController extends Controller
 {
@@ -39,7 +40,7 @@ class AutenticationController extends Controller
 
         if ($usuario["rous_codigo"] == 1) {
             $request->session()->put('admin', $usuario);
-            return redirect()->route('admin.home');
+            return redirect()->route('admin.index');
 
         } elseif ($usuario["rous_codigo"] == 2) {
             $request->session()->put('digitador', $usuario);
@@ -47,13 +48,15 @@ class AutenticationController extends Controller
 
         } elseif ($usuario["rous_codigo"] == 3) {
             $request->session()->put('observador', $usuario);
+            return redirect()->route('observador.index');
         }
 
     }
 
     public function registrar()
     {
-        return view('auth.registrar');
+        $roles = DB::table('roles_usuarios')->select('rous_codigo','rous_nombre')->limit(3)->orderBy('rous_codigo')->get();
+        return view('auth.registrar',compact('roles'));
     }
 
     public function guardarRegistro(Request $request)
@@ -70,14 +73,13 @@ class AutenticationController extends Controller
             'usua_profesion' => $request->profesion,
             'usua_creado' => Carbon::now()->toDateString(),
             'usua_actualizado' => Carbon::now()->toDateString(),
-            // estado por defecto A = Activo, S = Suspendido
-            'usua_vigente' => 'A',
-            'usua_usuario_mod' => $request->nombre,
-            'rous_codigo' => 3,
+            'usua_vigente' => 'S',
+            'usua_usuario_mod' => $request->rut,
+            'rous_codigo' => $request->rol,
             'unid_codigo' => 1,
         ]);
         if ($usuario) {
-            return redirect()->to('ingresar');
+            return redirect()->route('admin.index');
         }
 
         return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');

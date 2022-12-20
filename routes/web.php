@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticationController;
 use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +18,16 @@ use App\Http\Controllers\AdminController;
 Route::get('ingresar', [AutenticationController::class, 'ingresar'])->name('ingresar.formulario')->middleware('verificar.sesion');
 Route::post('ingresar', [AutenticationController::class, 'validarIngreso'])->name('auth.ingresar');
 
-Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario')->middleware('verificar.sesion');
-Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+// Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario')->middleware('verificar.sesion');
+// Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
 
 Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');
 
 Route::middleware('verificar.admin')->group(function () {
-    Route::get('/', [AdminController::class,'home'])->name('admin.home');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
+    Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+
+
+    Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });
