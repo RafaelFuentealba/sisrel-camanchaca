@@ -20,7 +20,6 @@
             <ul class="dropdown-menu">
                 <li><a href="salir">Login</a></li>
                 <li><a href="{{ route('admin.users') }}">Ver usuarios</a></li>
-                <li><a href="{{ route('registrar.formulario') }}">Agregar Usuario</a></li>
                 <li><a href="#">Olvidaste tu contraseña ?</a></li>
             </ul>
         </li>
@@ -84,40 +83,51 @@
 @endsection
 
 @section('contenido')
-    <div class="container">
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th>Rut</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Profesion</th>
-                    <th>Cargo</th>
-                    <th>Estado</th>
-                    <th>Email</th>
-                    <th>Email Alternativo</th>
-                    <th>Rol</th>
-                    <th>Usuario que actualizo</th>
-                    <th>Unidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($usuarios as $usuario)
-                    <tr>
-                        <td>{{$usuario->usua_rut}}</td>
-                        <td>{{$usuario->usua_nombre}}</td>
-                        <td>{{$usuario->usua_apellido}}</td>
-                        <td>{{$usuario->usua_profesion}}</td>
-                        <td>{{$usuario->usua_cargo}}</td>
-                        <td>{{$usuario->usua_vigente}}</td>
-                        <td>{{$usuario->usua_email}}</td>
-                        <td>{{$usuario->usua_email_alternativo}}</td>
-                        <td>{{$usuario->rous_codigo}}</td>
-                        <td>{{$usuario->usua_usuario_mod}}</td>
-                        <td>{{$usuario->unid_codigo}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="card">
+        <div class="card-header">
+            <h4>Listado de usuarios</h4>
+            <div class="card-header-action">
+                <a href="{{route('registrar.formulario')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Usuario</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-md">
+                    <tbody>
+                        <tr>
+                            <th>Rut</th>
+                            <th>Nombre</th>
+                            <th>Cargo</th>
+                            <th>Profesion</th>
+                            <th>Email</th>
+                            <th>Creado</th>
+                            <th>Vigente/Rol</th>
+                        </tr>
+                        @foreach ($usuarios as $usuario)
+                            <tr>
+                                <td>{{ $usuario->usua_rut }}</td>
+                                <td>{{ $usuario->usua_nombre }} {{ $usuario->usua_apellido }}</td>
+                                <td>{{ $usuario->usua_cargo }}</td>
+                                <td>{{ $usuario->usua_profesion }}</td>
+                                <td>{{ $usuario->usua_email }}</td>
+                                <td>{{ $usuario->usua_creado }}</td>
+                                @if ($usuario->usua_vigente == 'S')
+                                    <td class="badge badge-success">Activo</td>
+                                @else
+                                    <td class="badge badge-danger">Inactivo</td>
+                                @endif
+                                @if ($usuario->rous_codigo == 1)
+                                    <td class="badge badge-warning">Administrador</td>
+                                @elseif ($usuario->rous_codigo == 2)
+                                    <td class="badge badge-info">Digitador</td>
+                                @elseif ($usuario->rous_codigo == 3)
+                                    <td class="badge badge-primary">Observador</td>
+                                @endif
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 @endsection

@@ -10,22 +10,23 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/estilos.css">
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{asset('public/css/estilos.css')}}">
+    <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
 </head>
 
-<body style="background: url(img/mar.jpg); background-size:cover; background-repeat:no-repeat;">
+<body style="background: url({{ asset('public/img/mar.jpg') }}); background-size:cover; background-repeat:no-repeat;">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <img class="img" src="img/logo_texto.png"></img>
+                    <img class="img" src="{{ asset('public/img/logo_texto.png') }}"></img>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="wrap d-md-flex">
-                        <div class="img" style="background-image: url(img/camanchaca.png); width:350px;">
+                        <div class="img"
+                            style="background-image: url({{ asset('public/img/camanchaca.png') }}); width:350px;">
                         </div>
                         <div class="login-wrap p-4 p-md-5">
                             <div class="d-flex">
@@ -93,8 +94,8 @@
                                 <div class="form-group mb-3">
                                     <label class="label" for="rol">Asigne un rol al nuevo usuario </label>
                                     <select name="rol" id="rol" class="formbold-form-input">
-                                        @foreach ($roles as $rol )
-                                            <option value="{{$rol->rous_codigo}}" >{{$rol->rous_nombre}}</option>
+                                        @foreach ($roles as $rol)
+                                            <option value="{{ $rol->rous_codigo }}">{{ $rol->rous_nombre }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -118,9 +119,9 @@
         </div>
     </section>
 
-    <script src="js/jquery.min.js"></script>
+    <script src="{{asset('public/js/jquery.min.js')}}"></script>
     <!-- <script src="js/popper.js"></script> -->
-    <script src="js/main.js"></script>
+    <script src="{{asset('public/js/main.js')}}"></script>
 
 </body>
 
