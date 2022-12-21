@@ -27,7 +27,7 @@ Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('aut
 
 
 Route::middleware('verificar.admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
     Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
 
