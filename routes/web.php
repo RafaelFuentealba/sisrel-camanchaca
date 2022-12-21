@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticationController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ObservadorController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,7 @@ Route::post('registrarSuperadmin', [AutenticationController::class, 'guardarSupe
 
 Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');
 
+
 Route::middleware('verificar.admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
@@ -31,6 +34,10 @@ Route::middleware('verificar.admin')->group(function () {
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });
+Route::middleware('verificar.observador')-> group(function(){
+    Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
+});
+
 
 Route::middleware('verificar.superadmin')->group(function() {
     Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
