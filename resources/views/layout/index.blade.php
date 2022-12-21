@@ -9,13 +9,13 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Account SAS Camanchaca</title>
   <!-- General CSS Files -->
-  <link href="css/app.css" rel="stylesheet">
-  <link href="css/social.css" rel="stylesheet">
+  <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/css/social.css') }}" rel="stylesheet">
   <!-- Template CSS -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/components.css" rel="stylesheet">
+  <link href="{{ asset('public/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/css/components.css') }}" rel="stylesheet">
   <!-- Custom style CSS -->
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="{{ asset('public/css/custom.css') }}" rel="stylesheet">
   <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
 </head>
 
@@ -57,27 +57,27 @@
               </div>
               <div class="dropdown-list-content dropdown-list-message">
                 <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar
-											text-white"> <img alt="image" src="assets/img/users/user-1.png" class="rounded-circle">
+											text-white"> <img alt="image" src="{{asset('public/assets/img/users/user-1.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">John
                       Deo</span>
                     <span class="time messege-text">Please check your mail !!</span>
                     <span class="time">2 Min Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="{{asset('public/assets/img/users/user-2.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Request for leave
                       application</span>
                     <span class="time">5 Min Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-5.png" class="rounded-circle">
+                    <img alt="image" src="{{asset('public/assets/img/users/user-5.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
                       Ryan</span> <span class="time messege-text">Your payment invoice is
                       generated.</span> <span class="time">12 Min Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-4.png" class="rounded-circle">
+                    <img alt="image" src="{{asset('public/assets/img/users/user-4.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
                       Smith</span> <span class="time messege-text">hii John, I have upload
                       doc
@@ -85,7 +85,7 @@
                       Min Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-3.png" class="rounded-circle">
+                    <img alt="image" src="{{asset('public/assets/img/users/user-3.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
                       Joshi</span> <span class="time messege-text">Please do as specify.
                       Let me
@@ -93,7 +93,7 @@
                       Days Ago</span>
                   </span>
                 </a> <a href="#" class="dropdown-item"> <span class="dropdown-item-avatar text-white">
-                    <img alt="image" src="assets/img/users/user-2.png" class="rounded-circle">
+                    <img alt="image" src="{{asset('public/assets/img/users/user-2.png')}}" class="rounded-circle">
                   </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
                       Smith</span> <span class="time messege-text">Client Requirements</span>
                     <span class="time">2 Days Ago</span>
@@ -150,7 +150,7 @@
               </div>
             </div>
           </li>
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="assets/img/user.png" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image" src="{{asset('public/assets/img/user.png')}}" class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
               <a href="profile.html" class="dropdown-item has-icon"> <i class="far
@@ -171,7 +171,7 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="assets/img/logo.png" class="header-logo" /> <span class="logo-name">Otika</span>
+            <a href="index.html"> <img alt="image" src="{{ asset('public/img/camanchaca.png') }}" class="header-logo" /> <span class="logo-name">SISREL</span>
             </a>
           </div>
 
@@ -209,7 +209,7 @@
                           </div>
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                             <div class="banner-img">
-                              <img src="assets/img/banner/1.png" alt="">
+                              <img src="{{asset('public/assets/img/banner/1.png')}}" alt="">
                             </div>
                           </div>
                         </div>
@@ -231,7 +231,7 @@
                           </div>
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                             <div class="banner-img">
-                              <img src="assets/img/banner/2.png" alt="">
+                              <img src="{{asset('public/assets/img/banner/2.png')}}" alt="">
                             </div>
                           </div>
                         </div>
@@ -254,7 +254,7 @@
                           </div>
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                             <div class="banner-img">
-                              <img src="assets/img/banner/3.png" alt="">
+                              <img src="{{asset('public/assets/img/banner/3.png')}}" alt="">
                             </div>
                           </div>
                         </div>
@@ -276,7 +276,7 @@
                           </div>
                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                             <div class="banner-img">
-                              <img src="assets/img/banner/4.png" alt="">
+                              <img src="{{asset('public/assets/img/banner/4.png')}}" alt="">
                             </div>
                           </div>
                         </div>
@@ -326,15 +326,15 @@
   </div>
   </div>
   <!-- General JS Scripts -->
-  <script src="js/app.min.js"></script>
+  <script src="{{ asset('public/js/app.min.js') }}"></script>
   <!-- JS Libraies -->
-  <script src="js/apex.min.js"></script>
+  <script src="{{ asset('public/js/apex.min.js') }}"></script>
   <!-- Page Specific JS File -->
-  <script src="js/index.js"></script>
+  <script src="{{ asset('public/js/index.js') }}"></script>
   <!-- Template JS File -->
-  <script src="js/scripts.js"></script>
+  <script src="{{ asset('public/js/scripts.js') }}"></script>
   <!-- Custom JS File -->
-  <script src="js/custom.js"></script>
+  <script src="{{ asset('public/js/custom.js') }}"></script>
 </body>
 
 

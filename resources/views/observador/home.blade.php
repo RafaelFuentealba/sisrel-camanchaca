@@ -8,13 +8,13 @@
         <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
     </li>
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Iniciativas</span></a>
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Iniciativas</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="#">iniciativas creadas</a></li>
         </ul>
     </li>
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Usuarios</span></a>
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Usuarios</span></a>
         <ul class="dropdown-menu">
             <li><a href="/">Login</a></li>
             <li><a href="#">Olvidaste tu contraseña ?</a></li>
@@ -24,15 +24,15 @@
 
     <li class="menu-header">UI Elements</li>
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Objetivos
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Objetivos
             </span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="alert.html">Objs. de desarrollo sostenible</a></li>
+            <li><a class="nav-link" href="#">Objs. de desarrollo sostenible</a></li>
         </ul>
     </li>
 
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="pie-chart"></i><span>Analisis de datos</span></a>
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Analisis de datos</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="#">Revisar analisis</a></li>
         </ul>
@@ -40,7 +40,7 @@
 
 
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layout"></i><span>Extracción de datos
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Extracción de datos
             </span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="#">Revisar Encuesta </a></li>
@@ -49,7 +49,7 @@
 
     <li class="menu-header">Maps</li>
     <li class="dropdown">
-        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="map"></i><span>Mapa de las plantas
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Mapa de las plantas
             </span></a>
         <ul class="dropdown-menu">
             <li><a href="#">Bitacora</a></li>
