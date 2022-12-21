@@ -20,7 +20,7 @@
             <li><a href="#">Olvidaste tu contraseña ?</a></li>
         </ul>
     </li>
-    
+
 
     <li class="menu-header">UI Elements</li>
     <li class="dropdown">
@@ -77,10 +77,74 @@
 @section('contenido')
 
 
-<h1>
-    Usted Solo tiene acceso limitado
-
-</h1>
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h4>Iniciativas Creadas</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped" id="table-1">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                Numero
+                            </th>
+                            <th>Nombre de la iniciativa</th>
+                            <th>Progreso</th>
+                            <th>Participantes</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Estado</th>
+                            <th>Información</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>Añadir encuentas de clima</td>
+                            <td class="align-middle">
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-success width-per-70">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <img alt="image" src="{{ asset('public/assets/img/users/user-1.png') }}" width="35">
+                            </td>
+                            <td>2018-01-20</td>
+                            <td>
+                                <div class="badge badge-warning badge-shadow">Vigente</div>
+                            </td>
+                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2
+                            </td>
+                            <td>Registrar usuarios</td>
+                            <td class="align-middle">
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-success width-per-95"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <img alt="image" src="{{ asset('public/assets/img/users/user-1.png') }}" width="35">
+                            </td>
+                            <td>2018-01-16</td>
+                            <td>
+                                <div class="badge badge-danger badge-shadow">NO Vigente</div>
+                            </td>
+                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
