@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'verificar.admin' => \App\Http\Middleware\VerificarAdmin::class,
         'verificar.digitador' => \App\Http\Middleware\VerificarDigitador::class,
         'verificar.observador' => \App\Http\Middleware\VerificarObservador::class,
+        'verificar.superadmin' => \App\Http\Middleware\VerificarSuperadmin::class,
     ];
 }

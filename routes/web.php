@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticationController;
+use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AdminController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +18,8 @@ use App\Http\Controllers\AdminController;
 Route::get('ingresar', [AutenticationController::class, 'ingresar'])->name('ingresar.formulario')->middleware('verificar.sesion');
 Route::post('ingresar', [AutenticationController::class, 'validarIngreso'])->name('auth.ingresar');
 
-// Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario')->middleware('verificar.sesion');
-// Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+Route::get('registrarSuperadmin', [AutenticationController::class, 'registrarSuperadmin'])->name('registrarsuperadmin.formulario');
+Route::post('registrarSuperadmin', [AutenticationController::class, 'guardarSuperadmin'])->name('auth.registrar.superadmin');
 
 Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('auth.cerrar');
 
@@ -30,4 +30,10 @@ Route::middleware('verificar.admin')->group(function () {
 
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
+});
+
+Route::middleware('verificar.superadmin')->group(function() {
+    Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
+    Route::get('superadmin/gestionar-usuarios', [SuperadminController::class, 'listarUsuarios'])->name('superadmin.gestionar.usuarios');
+    Route::post('superadmin/gestionar-usuarios', [SuperadminController::class, 'guardarAdmin'])->name('superadmin.registrar.admin');
 });
