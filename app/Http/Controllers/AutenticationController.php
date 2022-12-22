@@ -72,7 +72,7 @@ class AutenticationController extends Controller
     public function guardarRegistro(Request $request)
     {
         $usuario = Usuarios::create([
-            'usua_rut' => $request->run,
+            'usua_rut' => Str::upper($request->run),
             'usua_email' => $request->email,
             'usua_email_alternativo' => $request->email_alt,
             // hash para ocultar la clave

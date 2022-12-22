@@ -102,6 +102,7 @@
                             <th>Email</th>
                             <th>Creado</th>
                             <th>Vigente/Rol</th>
+                            <th>Acciones</th>
                         </tr>
                         @foreach ($usuarios as $usuario)
                             <tr>
@@ -123,6 +124,9 @@
                                 @elseif ($usuario->rous_codigo == 3)
                                     <td class="badge badge-primary">Observador</td>
                                 @endif
+                                <td>
+                                    <a href="{{route('admin.editar',$usuario->usua_rut)}}" class="btn btn-info">Editar</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

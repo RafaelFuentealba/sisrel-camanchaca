@@ -28,8 +28,10 @@ Route::get('salir', [AutenticationController::class, 'cerrarSesion'])->name('aut
 
 Route::middleware('verificar.admin')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
-    Route::post('registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+    Route::get('admin/registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
+    Route::post('admin/registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
+    Route::get('admin/{usua_rut}/editar', [AdminController::class, 'editar'])->name('admin.editar');
+    Route::put('admin/{usua_rut}/editar', [AdminController::class, 'update'])->name('admin.update');
 
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
