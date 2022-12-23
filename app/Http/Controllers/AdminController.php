@@ -59,8 +59,10 @@ class AdminController extends Controller
         return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
     }
 
-    public function destroy($id)
+    public function destroy($rut)
     {
-        //
+        Usuarios::where(['usua_rut' => $rut])->delete();
+        return redirect()->route('admin.users');
     }
+
 }

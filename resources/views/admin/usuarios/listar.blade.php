@@ -4,7 +4,7 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Administrador</li>
         <li class="dropdown active">
-            <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
+            <a href="{{route('admin.index')}}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
         </li>
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -18,7 +18,7 @@
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                     data-feather="user-check"></i><span>Usuarios</span></a>
             <ul class="dropdown-menu">
-                <li><a href="salir">Login</a></li>
+                <li><a href="{{route('auth.cerrar')}}">Login</a></li>
                 <li><a href="{{ route('admin.users') }}">Ver usuarios</a></li>
                 <li><a href="#">Olvidaste tu contraseña ?</a></li>
             </ul>
@@ -102,7 +102,8 @@
                             <th>Email</th>
                             <th>Creado</th>
                             <th>Vigente/Rol</th>
-                            <th>Acciones</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
                         </tr>
                         @foreach ($usuarios as $usuario)
                             <tr>
@@ -125,7 +126,13 @@
                                     <td class="badge badge-primary">Observador</td>
                                 @endif
                                 <td>
-                                    <a href="{{route('admin.editar',$usuario->usua_rut)}}" class="btn btn-info">Editar</a>
+                                    <a href="{{route('admin.editar',$usuario->usua_rut)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td>
+                                    <form action="{{route('admin.borrar',$usuario->usua_rut)}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
