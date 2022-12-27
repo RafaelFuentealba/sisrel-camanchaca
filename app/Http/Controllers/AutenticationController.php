@@ -71,6 +71,35 @@ class AutenticationController extends Controller
 
     public function guardarRegistro(Request $request)
     {
+        $validacion = $request->validate(
+            [
+                'run' => 'required',
+                'nombre' => 'required|max:100',
+                'apellido' => 'required|max:100',
+                'email' => 'required|max:100',
+                'email_alt' => 'max:100',
+                'clave' => 'required',
+                'cargo' => 'required|max:100',
+                'profesion' => 'max:100',
+                'rol' => 'required'
+            ],
+            [
+                'run.required' => 'Es necesario ingresar un rut',
+                'nombre.required' => 'El nombre es un parametro requerido',
+                'nombre.max' => 'El nombre ingresado supera el máximo de carácteres permitidos',
+                'apellido.required' => 'El apellido es un parametro requerido',
+                'apellido.max' => 'El apellido ingresado supera el máximo de carácteres permitidos',
+                'email.requerid' => 'El email es un parametro requerido',
+                'email.max' => 'El email ingresado supera el máximo de carácteres permitidos',
+                'email_alt.max' => 'El email alternativo ingresado supera el máximo de carácteres permitidos',
+                'clave.required' => 'La contraseña es requerida',
+                'cargo.required' => 'Es requido asignar un cargo al usuario',
+                'cargo.max' => 'El cargo supera la cantidad máxima de carácteres permitidos',
+                'profesion.max' => 'La profesión supera la cantidad máxima de carácteres permitidos',
+                'rol.required' => 'Es requido asignar un rol al usuario',
+
+            ]
+        );
         $usuario = Usuarios::create([
             'usua_rut' => Str::upper($request->run),
             'usua_email' => $request->email,
@@ -132,18 +161,18 @@ class AutenticationController extends Controller
             ],
             [
                 'nombre.required' => 'El nombre es requerido',
-                'nombre.max' => 'El nombre excede los 50 caracteres',
+                'nombre.max' => 'El nombre excede los 50 carácteres',
                 'apellido.required' => 'El apellido es requerido',
-                'apellido.max' => 'El apellido excede los 50 caracteres',
+                'apellido.max' => 'El apellido excede los 50 carácteres',
                 'run.required' => 'El RUN es requerido',
                 'run.regex' => 'El formato del RUN debe ser 12345678-9',
                 'run.unique' => 'El RUN ya se encuentra registrado',
                 'email.required' => 'El correo electrónico es requerido',
-                'email.max' => 'El correo electrónico excede los 100 caracteres',
+                'email.max' => 'El correo electrónico excede los 100 carácteres',
                 'email.unique' => 'El correo electrónico ya se encuentra registrado',
                 'clave.required' => 'La contraseña es requerida',
-                'clave.min' => 'La contraseña debe tener 8 caracteres como mínimo',
-                'clave.max' => 'La contraseña debe tener 25 caracteres como máximo',
+                'clave.min' => 'La contraseña debe tener 8 carácteres como mínimo',
+                'clave.max' => 'La contraseña debe tener 25 carácteres como máximo',
                 'confirmarclave.required' => 'La confirmación de contraseña es requerida',
                 'confirmarclave.same' => 'Las contraseñas no coinciden'
             ]

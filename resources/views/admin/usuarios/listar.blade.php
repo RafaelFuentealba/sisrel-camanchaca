@@ -4,7 +4,7 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Administrador</li>
         <li class="dropdown active">
-            <a href="{{route('admin.index')}}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
+            <a href="{{ route('admin.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
         </li>
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -18,7 +18,6 @@
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                     data-feather="user-check"></i><span>Usuarios</span></a>
             <ul class="dropdown-menu">
-                <li><a href="{{route('auth.cerrar')}}">Login</a></li>
                 <li><a href="{{ route('admin.users') }}">Ver usuarios</a></li>
                 <li><a href="#">Olvidaste tu contraseña ?</a></li>
             </ul>
@@ -34,7 +33,7 @@
             </ul>
         </li>
 
-        <li class="menu-header">UI Elements</li>
+        <li class="menu-header">Analisis de datos</li>
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Objetivos
                 </span></a>
@@ -87,7 +86,8 @@
         <div class="card-header">
             <h4>Listado de usuarios</h4>
             <div class="card-header-action">
-                <a href="{{route('registrar.formulario')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Usuario</a>
+                <a href="{{ route('registrar.formulario') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo
+                    Usuario</a>
             </div>
         </div>
         <div class="card-body">
@@ -98,10 +98,10 @@
                             <th>Rut</th>
                             <th>Nombre</th>
                             <th>Cargo</th>
-                            <th>Profesion</th>
+                            <th>Profesión</th>
                             <th>Email</th>
-                            <th>Creado</th>
-                            <th>Vigente/Rol</th>
+                            <th>Vigencia</th>
+                            <th>Rol</th>
                             <th>Editar</th>
                             <th>Borrar</th>
                         </tr>
@@ -112,24 +112,28 @@
                                 <td>{{ $usuario->usua_cargo }}</td>
                                 <td>{{ $usuario->usua_profesion }}</td>
                                 <td>{{ $usuario->usua_email }}</td>
-                                <td>{{ $usuario->usua_creado }}</td>
-                                @if ($usuario->usua_vigente == 'S')
-                                    <td class="badge badge-success">Activo</td>
-                                @else
-                                    <td class="badge badge-danger">Inactivo</td>
-                                @endif
-                                @if ($usuario->rous_codigo == 1)
-                                    <td class="badge badge-warning">Administrador</td>
-                                @elseif ($usuario->rous_codigo == 2)
-                                    <td class="badge badge-info">Digitador</td>
-                                @elseif ($usuario->rous_codigo == 3)
-                                    <td class="badge badge-primary">Observador</td>
-                                @endif
+                                <th>
+                                    @if ($usuario->usua_vigente == 'S')
+                                        <p class="badge badge-success"><strong>Activo</strong></p>
+                                    @else
+                                        <p class="badge badge-danger"><strong>Inactivo</strong></p>
+                                    @endif
+                                </th>
+                                <th>
+                                    @if ($usuario->rous_codigo == 1)
+                                        <p class="badge badge-warning"><strong>Administrador</strong></p>
+                                    @elseif ($usuario->rous_codigo == 2)
+                                        <p class="badge badge-info"><strong>Digitador</strong></p>
+                                    @elseif ($usuario->rous_codigo == 3)
+                                        <p class="badge badge-primary"><strong>Observador</strong></p>
+                                    @endif
+                                </th>
                                 <td>
-                                    <a href="{{route('admin.editar',$usuario->usua_rut)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
+                                            class="fa fa-edit"></i></a>
                                 </td>
                                 <td>
-                                    <form action="{{route('admin.borrar',$usuario->usua_rut)}}" method="post">
+                                    <form action="{{ route('admin.borrar', $usuario->usua_rut) }}" method="post">
                                         @csrf
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>

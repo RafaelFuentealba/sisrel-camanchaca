@@ -19,7 +19,6 @@
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                     data-feather="user-check"></i><span>Usuarios</span></a>
             <ul class="dropdown-menu">
-                <li><a href="{{route('auth.cerrar')}}">Login</a></li>
                 <li><a href="{{ route('admin.users') }}">Ver usuarios</a></li>
                 <li><a href="#">Olvidaste tu contraseña ?</a></li>
             </ul>
@@ -35,7 +34,7 @@
             </ul>
         </li>
 
-        <li class="menu-header">UI Elements</li>
+        <li class="menu-header">Analisis de datos</li>
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Objetivos
                 </span></a>

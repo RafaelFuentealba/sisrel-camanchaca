@@ -10,8 +10,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{asset('public/css/estilos.css')}}">
-    <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('public/css/estilos.css') }}">
+    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 </head>
 
 <body style="background: url({{ asset('public/img/mar.jpg') }}); background-size:cover; background-repeat:no-repeat;">
@@ -34,57 +34,103 @@
                                     <h3 class="mb-4">Sign In</h3>
                                 </div>
                             </div>
-                            <form action="{{ route('admin.update',$usuario->usua_rut) }}" class="signin-form" method="POST">
+                            <form action="{{ route('admin.update', $usuario->usua_rut) }}" class="signin-form"
+                                method="POST">
                                 @method('PUT')
                                 @csrf
-                                @if (Session::has('errorRegistro'))
-                                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-                                        <strong>{{ Session::get('errorRegistro') }}</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
+
+                                @if ($errors->has('nombre'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('nombre') }}</strong>
+
                                     </div>
                                 @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su nombre</label>
                                     <input type="text" class="form-control" placeholder="Ingrese su nombre" required
-                                        / name="nombre" id="nombre" value="{{$usuario->usua_nombre}}">
+                                        / name="nombre" id="nombre" value="{{ $usuario->usua_nombre }}">
                                 </div>
 
+                                @if ($errors->has('apellido'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('apellido') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su apellido</label>
                                     <input type="text" class="form-control" placeholder="Ingrese su apellido"
-                                        required / name="apellido" id="apellido" value="{{$usuario->usua_apellido}}">
+                                        required / name="apellido" id="apellido" value="{{ $usuario->usua_apellido }}">
                                 </div>
 
+                                @if ($errors->has('email'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese su correo</label>
                                     <input type="email" class="form-control" placeholder="example@gmail.com" required
-                                        / name="email" id="email" value="{{$usuario->usua_email}}">
+                                        / name="email" id="email" value="{{ $usuario->usua_email }}">
                                 </div>
 
+                                @if ($errors->has('email_alt'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('email_alt') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese un correo alternativo </label>
                                     <input type="email" class="form-control" placeholder="Ingrese un correo"
-                                        title="Este campo es opcional" / name="email_alt" id="email_alt" value="{{$usuario->usua_email_alternativo}}">
+                                        title="Este campo es opcional" / name="email_alt" id="email_alt"
+                                        value="{{ $usuario->usua_email_alternativo }}">
                                 </div>
 
+                                @if ($errors->has('run'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('run') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="name">Ingrese un run</label>
                                     <input type="text" class="form-control" placeholder="123454678-K" required
                                         pattern="\d{3,8}-[\d|K]{1}" title="Debe ser un Rut válido" / name="run"
-                                        id="run" value="{{$usuario->usua_rut}}">
+                                        id="run" value="{{ $usuario->usua_rut }}">
                                 </div>
 
+                                @if ($errors->has('clave'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('clave') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="clave">Contraseña</label>
                                     <input type="password" class="form-control" placeholder="Password" required
                                         id="clave" name="clave">
                                 </div>
 
+                                @if ($errors->has('cargo'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('cargo') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label for="cargo" class="label">Cargo del responsable:</label>
                                     <select class="formbold-form-input" name="cargo" id="cargo" required>
-                                        <option value="{{$usuario->usua_cargo}}">{{$usuario->usua_cargo}}</option>
+                                        <option value="{{ $usuario->usua_cargo }}">{{ $usuario->usua_cargo }}
+                                        </option>
                                         <option value="Jefe de planta">Jefe de planta</option>
                                         <option value="Encargado de zona">Encargado de zona</option>
                                         <option value="Administración">Administración</option>
@@ -93,6 +139,13 @@
                                     </select>
                                 </div>
 
+                                @if ($errors->has('rol'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('rol') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="rol">Asigne un rol al nuevo usuario </label>
                                     <select name="rol" id="rol" class="formbold-form-input">
@@ -102,6 +155,13 @@
                                     </select>
                                 </div>
 
+                                @if ($errors->has('vigente'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('vigente') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="vigente">¿El usuario esta vigente?</label>
                                     <select name="vigente" id="vigente" class="formbold-form-input">
@@ -110,10 +170,17 @@
                                     </select>
                                 </div>
 
+                                @if ($errors->has('profesion'))
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
+                                        role="alert">
+                                        <strong>{{ $errors->first('profesion') }}</strong>
+
+                                    </div>
+                                @endif
                                 <div class="form-group mb-3">
                                     <label class="label" for="profesion">Ingrese su profesión </label>
                                     <input type="text" class="form-control" placeholder="Ingrese su profesion"
-                                        name="profesion" id="profesion" value="{{$usuario->usua_profesion}}">
+                                        name="profesion" id="profesion" value="{{ $usuario->usua_profesion }}">
                                 </div>
 
                                 <div class="form-group">
@@ -129,9 +196,9 @@
         </div>
     </section>
 
-    <script src="{{asset('public/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('public/js/jquery.min.js') }}"></script>
     <!-- <script src="js/popper.js"></script> -->
-    <script src="{{asset('public/js/main.js')}}"></script>
+    <script src="{{ asset('public/js/main.js') }}"></script>
 
 </body>
 

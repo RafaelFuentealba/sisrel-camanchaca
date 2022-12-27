@@ -32,7 +32,7 @@
         </ul>
     </li>
 
-    <li class="menu-header">UI Elements</li>
+    <li class="menu-header">Analisis de datos</li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Objetivos
             </span></a>

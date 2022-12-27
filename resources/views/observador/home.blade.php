@@ -22,7 +22,7 @@
     </li>
 
 
-    <li class="menu-header">UI Elements</li>
+    <li class="menu-header">Analisis de datos</li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Objetivos
             </span></a>
@@ -138,7 +138,7 @@
                             </td>
                             <td><a href="#" class="btn btn-primary">Detail</a></td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
