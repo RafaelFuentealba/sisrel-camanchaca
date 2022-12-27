@@ -49,7 +49,7 @@
             <ul class="dropdown-menu">
                 <li><a class="nav-link" href="#">Añadir analisis </a></li>
                 <li><a class="nav-link" href="#">Modificar analisis </a></li>
-                <li><a class="nav-link" href="#">Revisar analisis</a></li>
+                <li><a class="nav-link" href="{{route('admin.graficos')}}">Revisar analisis</a></li>
             </ul>
         </li>
 

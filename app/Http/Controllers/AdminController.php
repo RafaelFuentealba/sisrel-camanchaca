@@ -97,4 +97,8 @@ class AdminController extends Controller
         return redirect()->route('admin.users');
     }
 
+    public function graficos()
+    {
+        return view('admin.charts.graficos');
+    }
 }

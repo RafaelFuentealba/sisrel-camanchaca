@@ -34,6 +34,8 @@ Route::middleware('verificar.admin')->group(function () {
     Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
     Route::post('admin/{usua_rut}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
+    Route::get('admin/analizar-datos',[AdminController::class,'graficos'])->name('admin.graficos');
+
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });

@@ -89,8 +89,7 @@
                                 <a href="profile.html" class="dropdown-item has-icon"> <i
                                         class="far
                                             fa-user"></i> Perfil
-                                </a> <a href="timeline.html" class="dropdown-item has-icon"> <i
-                                        class="fas fa-bolt"></i>
+                                </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                                     Activities
                                 </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                                     Configuraciones
@@ -267,7 +266,19 @@
                 </div>
             </div>
             </div>
+
             <!-- General JS Scripts -->
+            <script src="{{asset('public/js/app.min.js')}}"></script>
+            <!-- JS Libraies -->
+            <script src="{{asset('public/js/chart.min.js')}}"></script>
+            <!-- Page Specific JS File -->
+            <script src="{{asset('public//js/chart-chartjs.js')}}"></script>
+            <!-- Template JS File -->
+            <script src="{{ asset('public/js/scripts.js') }}"></script>
+            <!-- Custom JS File -->
+            <script src="{{ asset('public/js/custom.js') }}"></script>
+            <script src="{{ asset('public/js/index.js') }}"></script>
+            {{-- <!-- General JS Scripts -->
             <script src="{{ asset('public/js/app.min.js') }}"></script>
             <!-- JS Libraies -->
             <script src="{{ asset('public/js/apex.min.js') }}"></script>
@@ -276,7 +287,7 @@
             <!-- Template JS File -->
             <script src="{{ asset('public/js/scripts.js') }}"></script>
             <!-- Custom JS File -->
-            <script src="{{ asset('public/js/custom.js') }}"></script>
+            <script src="{{ asset('public/js/custom.js') }}"></script> --}}
         </body>
 
 
