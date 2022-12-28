@@ -110,15 +110,18 @@
                         <li class="{{ Route::is('superadmin.index') ? 'dropdown active' : 'dropdown' }}">
                             <a href="{{ route('superadmin.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
                         </li>
-                        <li class="{{ Route::is('superadmin.gestionar.usuarios') ? 'dropdown active' : 'dropdown' }}">
-                            <a href="{{ route('superadmin.gestionar.usuarios') }}" class="nav-link"><i data-feather="user-check"></i><span>Usuarios</span></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="grid"></i><span>Parámetros</span></a>
+                        <li class="{{ Route::is('superadmin.crear.usuario') || Route::is('superadmin.listar.usuarios') ? 'dropdown active' : 'dropdown' }}">
+                            <a href="javascript:void(0)" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Usuarios</span></a>
                             <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('superadmin.crear.usuario') }}">Crear</a></li>
+                                <li><a class="nav-link" href="{{ route('superadmin.listar.usuarios') }}">Listar</a></li>
+                            </ul>
+                        </li>
+                        <li class="{{ Route::is('superadmin.listar.roles') ? 'dropdown active' : 'dropdown' }}">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Parámetros</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('superadmin.listar.roles') }}">Roles</a></li>
                                 <li><a class="nav-link" href="javascript:void(0)">Unidades</a></li>
-                                <li><a class="nav-link" href="javascript:void(0)">Otro</a></li>
                                 <li><a class="nav-link" href="djavascript:void(0)">Otro</a></li>
                             </ul>
                         </li>

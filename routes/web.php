@@ -46,6 +46,13 @@ Route::middleware('verificar.observador')-> group(function(){
 
 Route::middleware('verificar.superadmin')->group(function() {
     Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
-    Route::get('superadmin/gestionar-usuarios', [SuperadminController::class, 'listarUsuarios'])->name('superadmin.gestionar.usuarios');
-    Route::post('superadmin/gestionar-usuarios', [SuperadminController::class, 'guardarAdmin'])->name('superadmin.registrar.admin');
+    Route::get('superadmin/crear-usuario', [SuperadminController::class, 'crearUsuario'])->name('superadmin.crear.usuario');
+    Route::get('superadmin/listar-usuarios', [SuperadminController::class, 'listarUsuarios'])->name('superadmin.listar.usuarios');
+    Route::post('superadmin/listar-usuarios', [SuperadminController::class, 'guardarAdmin'])->name('superadmin.registrar.admin');
+    Route::put('superadmin/habilitar-usuario/{usua_rut}', [SuperadminController::class, 'habilitarAdmin'])->name('superadmin.habilitar.admin');
+    Route::put('superadmin/deshabilitar-usuario/{usua_rut}', [SuperadminController::class, 'deshabilitarAdmin'])->name('superadmin.deshabilitar.admin');
+    Route::delete('superadmin/eliminar-usuario/{usua_rut}', [SuperadminController::class, 'eliminarAdmin'])->name('superadmin.eliminar.admin');
+
+    Route::get('superadmin/listar-roles', [SuperadminController::class, 'listarRoles'])->name('superadmin.listar.roles');
+    Route::put('superadmin/actualizar-rol/{rous_codigo}', [SuperadminController::class, 'actualizarRol'])->name('superadmin.actualizar.rol');
 });
