@@ -39,8 +39,11 @@ Route::middleware('verificar.admin')->group(function () {
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });
+
+// rutas asociadas al rol
 Route::middleware('verificar.observador')-> group(function(){
     Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
+    Route::get('/Data analitic', [ObservadorController::class, 'graficos'])->name('observador.graficos');
 });
 
 

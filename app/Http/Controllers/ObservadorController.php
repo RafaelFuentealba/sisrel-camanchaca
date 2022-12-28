@@ -12,4 +12,10 @@ class ObservadorController extends Controller
     {
         return view('observador.home');
     }
+
+
+    public function graficos()
+    {
+        return view('observador.charts.graficos');
+    }
 }
