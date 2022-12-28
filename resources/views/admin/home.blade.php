@@ -11,7 +11,7 @@
             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                     data-feather="briefcase"></i><span>Iniciativas</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">iniciativas creadas</a></li>
+                <li><a class="nav-link" href="#">Iniciativas creadas</a></li>
                 <li><a class="nav-link" href="#">Crear nueva iniciativa</a></li>
             </ul>
         </li>
@@ -80,13 +80,4 @@
     </ul>
     </aside>
     </div>
-@endsection
-
-
-
-
-@section('contenido')
-    <h1>
-        Usted es un VIP asi que relajese
-    </h1>
 @endsection

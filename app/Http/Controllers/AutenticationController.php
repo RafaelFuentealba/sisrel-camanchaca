@@ -46,7 +46,7 @@ class AutenticationController extends Controller {
             return redirect()->route('admin.index');
         } elseif ($usuario->rous_codigo == 2) {
             $request->session()->put('digitador', $usuario);
-            return redirect()->route('editor.index');
+            return redirect()->route('digitador.index');
         } elseif ($usuario->rous_codigo == 3) {
             $request->session()->put('observador', $usuario);
             return redirect()->route('observador.index');

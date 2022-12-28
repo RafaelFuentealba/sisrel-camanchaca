@@ -5,6 +5,7 @@ use App\Http\Controllers\AutenticationController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ObservadorController;
+use App\Http\Controllers\DigitadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,17 +35,24 @@ Route::middleware('verificar.admin')->group(function () {
     Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
     Route::post('admin/{usua_rut}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
-    Route::get('admin/analizar-datos',[AdminController::class,'graficos'])->name('admin.graficos');
+    Route::get('admin/analizar-datos', [AdminController::class, 'graficos'])->name('admin.graficos');
 
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });
-Route::middleware('verificar.observador')-> group(function(){
-    Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
+
+Route::middleware('verificar.digitador')->group(function () {
+    Route::get('digitador', [DigitadorController::class, 'index'])->name('digitador.index');
+    Route::get('digitado/listar-iniciativas', [DigitadorController::class, 'listarIniciativas'])->name('digitador.listar.iniciativas');
 });
 
 
-Route::middleware('verificar.superadmin')->group(function() {
+Route::middleware('verificar.observador')->group(function () {
+    Route::get('/', [ObservadorController::class, 'index'])->name('observador.index');
+});
+
+
+Route::middleware('verificar.superadmin')->group(function () {
     Route::get('superadmin', [SuperadminController::class, 'index'])->name('superadmin.index');
     Route::get('superadmin/crear-usuario', [SuperadminController::class, 'crearUsuario'])->name('superadmin.crear.usuario');
     Route::get('superadmin/listar-usuarios', [SuperadminController::class, 'listarUsuarios'])->name('superadmin.listar.usuarios');
