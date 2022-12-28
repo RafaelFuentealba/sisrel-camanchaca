@@ -49,6 +49,10 @@ Route::middleware('verificar.digitador')->group(function () {
 
 Route::middleware('verificar.observador')->group(function () {
     Route::get('/', [ObservadorController::class, 'index'])->name('observador.index');
+// rutas asociadas al rol
+Route::middleware('verificar.observador')-> group(function(){
+    Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
+    Route::get('/Data analitic', [ObservadorController::class, 'graficos'])->name('observador.graficos');
 });
 
 
