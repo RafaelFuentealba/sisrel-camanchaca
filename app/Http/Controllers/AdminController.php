@@ -108,4 +108,8 @@ class AdminController extends Controller
             'regiones' => DB::table('regiones')->orderBy('regi_cut')->get()
         ]);
     }
+
+    public function crearIniciativa() {
+        return view('admin.iniciativas.crear');
+    }
 }

@@ -40,6 +40,7 @@ Route::middleware('verificar.admin')->group(function () {
     Route::get('admin/analizar-datos', [AdminController::class, 'graficos'])->name('admin.graficos');
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
+    Route::get('crear-iniciativa', [AdminController::class, 'crearIniciativa'])->name('admin.crear.iniciativa');
 });
 
 Route::middleware('verificar.digitador')->group(function () {
