@@ -1,4 +1,4 @@
-@extends('digitador.home')
+@extends('digitador.panel_digitador')
 
 @section('contenido')
     <div class="card">

@@ -1,4 +1,4 @@
-@extends('admin.home')
+@extends('admin.panel_admin')
 
 @section('contenido')
     <section class="container">

@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-        <title>Account SAS Camanchaca</title>
+        <title>SISREL Camanchaca</title>
         <!-- General CSS Files -->
         <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('public/css/social.css') }}" rel="stylesheet">
@@ -23,6 +23,7 @@
             integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
         <link rel="stylesheet" href="{{ asset('public/css/mapa.css') }}" />
         {{-- <script src="{{asset('public/js/mapa.js')}}"></script> --}}
+        <link rel='shortcut icon' type='image/x-icon' href='{{ asset('public/img/camanchaca.png') }}' />
 
     </head>
 
@@ -120,155 +121,18 @@
 
 
 
-
-
-
-
-
-
-                        <!--Acceso con privilegios  -->
-                        @yield('acceso')->('acceso')
-
-
-
+                        <!-- barra lateral izquierda  -->
+                        @yield('acceso')
 
 
 
                         <!-- Main Content -->
                         <div class="main-content">
-                            <section class="section">
-                                <div class="row ">
-                                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="card">
-                                            <div class="card-statistic-4">
-                                                <div class="align-items-center justify-content-between">
-                                                    <div class="row ">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                                            <div class="card-content">
-                                                                <h5 class="font-15">New Booking</h5>
-                                                                <h2 class="mb-3 font-18">258</h2>
-                                                                <p class="mb-0"><span class="col-green">10%</span>
-                                                                    Increase</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                                            <div class="banner-img">
-                                                                <img src="{{ asset('public/assets/img/banner/1.png') }}"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="card">
-                                            <div class="card-statistic-4">
-                                                <div class="align-items-center justify-content-between">
-                                                    <div class="row ">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                                            <div class="card-content">
-                                                                <h5 class="font-15"> Customers</h5>
-                                                                <h2 class="mb-3 font-18">1,287</h2>
-                                                                <p class="mb-0"><span class="col-orange">09%</span>
-                                                                    Decrease</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                                            <div class="banner-img">
-                                                                <img src="{{ asset('public/assets/img/banner/2.png') }}"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="card">
-                                            <div class="card-statistic-4">
-                                                <div class="align-items-center justify-content-between">
-                                                    <div class="row ">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                                            <div class="card-content">
-                                                                <h5 class="font-15">New Project</h5>
-                                                                <h2 class="mb-3 font-18">128</h2>
-                                                                <p class="mb-0"><span class="col-green">18%</span>
-                                                                    Increase</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                                            <div class="banner-img">
-                                                                <img src="{{ asset('public/assets/img/banner/3.png') }}"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="card">
-                                            <div class="card-statistic-4">
-                                                <div class="align-items-center justify-content-between">
-                                                    <div class="row ">
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                                                            <div class="card-content">
-                                                                <h5 class="font-15">Revenue</h5>
-                                                                <h2 class="mb-3 font-18">$48,697</h2>
-                                                                <p class="mb-0"><span class="col-green">42%</span>
-                                                                    Increase</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                                                            <div class="banner-img">
-                                                                <img src="{{ asset('public/assets/img/banner/4.png') }}"
-                                                                    alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            @yield('contenido')
+                        </div>   
 
 
-                                <!-- nuevo contenido -->
-                                @yield('contenido')->
-                                @section('contenido')
-                                </section>
-                                <div class="settingSidebar">
-                                    <div class="p-15 border-bottom">
-                                        <div class="theme-setting-options">
-                                            <label class="m-b-0">
-                                                <input type="checkbox" name="custom-switch-checkbox"
-                                                    class="custom-switch-input" id="mini_sidebar_setting">
-                                                <span class="custom-switch-indicator"></span>
-                                                <span class="control-label p-l-10">Mini Sidebar</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="p-15 border-bottom">
-                                        <div class="theme-setting-options">
-                                            <label class="m-b-0">
-                                                <input type="checkbox" name="custom-switch-checkbox"
-                                                    class="custom-switch-input" id="sticky_header_setting">
-                                                <span class="custom-switch-indicator"></span>
-                                                <span class="control-label p-l-10">Sticky Header</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
-                                        <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
-                                            <i class="fas fa-undo"></i> Restore Default
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+
                     </div>
                 </div>
             </div>

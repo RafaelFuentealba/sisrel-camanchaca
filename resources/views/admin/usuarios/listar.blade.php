@@ -1,6 +1,7 @@
-@extends('admin.home')
+@extends('admin.panel_admin')
 
 @section('contenido')
+<section class="section">
     <div class="card">
         <div class="card-header">
             <h4>Listado de usuarios</h4>
@@ -64,4 +65,5 @@
             </div>
         </div>
     </div>
+</section>
 @endsection

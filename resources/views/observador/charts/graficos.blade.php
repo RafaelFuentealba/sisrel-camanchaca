@@ -1,4 +1,4 @@
-@extends('observador.home')
+@extends('observador.panel_observador')
 
 @section('contenido')
     <section class="container">
