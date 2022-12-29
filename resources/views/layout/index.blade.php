@@ -17,6 +17,13 @@
         <!-- Custom style CSS -->
         <link href="{{ asset('public/css/custom.css') }}" rel="stylesheet">
         <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        <link rel="stylesheet" href="{{ asset('public/css/mapa.css') }}" />
+        {{-- <script src="{{asset('public/js/mapa.js')}}"></script> --}}
+
     </head>
 
     <body>
@@ -268,11 +275,11 @@
             </div>
 
             <!-- General JS Scripts -->
-            <script src="{{asset('public/js/app.min.js')}}"></script>
+            <script src="{{ asset('public/js/app.min.js') }}"></script>
             <!-- JS Libraies -->
-            <script src="{{asset('public/js/chart.min.js')}}"></script>
+            <script src="{{ asset('public/js/chart.min.js') }}"></script>
             <!-- Page Specific JS File -->
-            <script src="{{asset('public//js/chart-chartjs.js')}}"></script>
+            <script src="{{ asset('public//js/chart-chartjs.js') }}"></script>
             <!-- Template JS File -->
             <script src="{{ asset('public/js/scripts.js') }}"></script>
             <!-- Custom JS File -->

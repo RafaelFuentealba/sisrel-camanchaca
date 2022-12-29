@@ -35,8 +35,9 @@ Route::middleware('verificar.admin')->group(function () {
     Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
     Route::post('admin/{usua_rut}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
-    Route::get('admin/analizar-datos', [AdminController::class, 'graficos'])->name('admin.graficos');
+    Route::get('admin/mapa', [AdminController::class, 'map'])->name("admin.map");
 
+    Route::get('admin/analizar-datos', [AdminController::class, 'graficos'])->name('admin.graficos');
 
     Route::get('/usuarios', [AdminController::class, 'verUsuarios'])->name('admin.users');
 });
@@ -46,10 +47,6 @@ Route::middleware('verificar.digitador')->group(function () {
     Route::get('digitado/listar-iniciativas', [DigitadorController::class, 'listarIniciativas'])->name('digitador.listar.iniciativas');
 });
 
-
-Route::middleware('verificar.observador')->group(function () {
-    Route::get('/', [ObservadorController::class, 'index'])->name('observador.index');
-// rutas asociadas al rol
 Route::middleware('verificar.observador')-> group(function(){
     Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
     Route::get('/Data analitic', [ObservadorController::class, 'graficos'])->name('observador.graficos');

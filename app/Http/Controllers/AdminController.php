@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
+use App\Models\Regiones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -100,5 +101,11 @@ class AdminController extends Controller
     public function graficos()
     {
         return view('admin.charts.graficos');
+    }
+
+    public function map(){
+        return view('admin.mapas.mapa',[
+            'regiones' => DB::table('regiones')->orderBy('regi_cut')->get()
+        ]);
     }
 }
