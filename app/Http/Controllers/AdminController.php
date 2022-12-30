@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Models\Comunas;
 
 class AdminController extends Controller
 {
@@ -103,13 +104,34 @@ class AdminController extends Controller
         return view('admin.charts.graficos');
     }
 
-    public function map(){
-        return view('admin.mapas.mapa',[
+    public function map()
+    {
+        return view('admin.mapas.mapa', [
             'regiones' => DB::table('regiones')->orderBy('regi_cut')->get()
         ]);
     }
 
-    public function crearIniciativa() {
+    public function obtenerDatosComunas(Request $request)
+    {
+        if (isset($request->region)) {
+            $comunas = Comunas::all()->where('regi_codigo',$request->region);
+            // $comunas = DB::table('comunas')->where('regi_codigo', $request->region)->get();
+            return response()->json(['comunas' => $comunas, 'success' => true]);
+        } else {
+            return response()->json(['success' => false]);
+        }
+    }
+
+    public function obtenerDatosComuna(Request $request){
+        if(isset($request->comunas)){
+            $comuna = Comunas::all()->where('comu_codigo', $request->comunas);
+            return response()->json(['comuna' => $comuna, 'success' => true]);
+        }else{
+            return response()->json(['success' => false]);
+        }
+    }
+    public function crearIniciativa()
+    {
         return view('admin.iniciativas.crear');
     }
 }
