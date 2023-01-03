@@ -172,21 +172,6 @@
             var opciones = "<option value=''>Selecione una comuna</option>";
             for (let i in data.comunas) {
                 opciones += '<option value=" ' + data.comunas[i].comu_codigo + '">' + data.comunas[i].comu_nombre + '</option>';
-                // console.log(JSON.parse(data.comunas[i].comu_geoubicacion));
-
-
-
-                var coords = JSON.parse(data.comunas[i].comu_geoubicacion);
-                var limites = JSON.parse(data.comunas[i].comu_geolimites);
-                // var marker = L.marker([coords.lat, coords.lng]).addTo(map);
-                var figura = []
-                for (var j = 0; j < limites.clat.length; j++) {
-
-                    figura.push([limites.clat[j], limites.clng[j]])
-                }
-
-                var polygon = L.polygon(figura).addTo(map);
-
             }
 
             document.getElementById('comunas').innerHTML = opciones;
@@ -212,6 +197,7 @@
                 var coords = JSON.parse(data.comuna[i].comu_geoubicacion)
                 map.setView([coords.lat, coords.lng], 14);
 
+                var limites = JSON.parse(data.comuna[i].comu_geolimites);
 
                 var myIcon = L.icon({
                     iconUrl: "{{ asset('public/img/camanchaca.png') }}",
@@ -225,7 +211,12 @@
                     sidebar.toggle();
                 });
 
+                var figura = [];
+                for( var j = 0; j < limites.clat.length;j++){
+                    figura.push([limites.clat[j],limites.clng[j]])
+                }
 
+                var polygon = L.polygon(figura).addTo(map)
             }
         })
     })
