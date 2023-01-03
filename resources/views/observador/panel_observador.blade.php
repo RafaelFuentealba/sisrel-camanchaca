@@ -51,7 +51,7 @@
                 <li><a href="#">Bitacora</a></li>
             </ul>
         </li>
-        <li><a class="nav-link" href="#"><i data-feather="map-pin"></i><span>Vector
+        <li><a class="nav-link" href="{{route('observador.map')}}"><i data-feather="map-pin"></i><span>Vector
                     Map</span></a></li>
 
         </li>

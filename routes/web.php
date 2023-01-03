@@ -51,8 +51,12 @@ Route::middleware('verificar.digitador')->group(function () {
 });
 
 Route::middleware('verificar.observador')-> group(function(){
-    Route::get('/',[ObservadorController::class, 'index'])->name('observador.index');
-    Route::get('/Data analitic', [ObservadorController::class, 'graficos'])->name('observador.graficos');
+    Route::get('observador',[ObservadorController::class, 'index'])->name('observador.index');
+    Route::get('observador/data-analicis', [ObservadorController::class, 'graficos'])->name('observador.graficos');
+
+    Route::get('observador/mapa', [ObservadorController::class, 'map'])->name("observador.map");
+    Route::post('observador/mapa-regiones', [ObservadorController::class, 'obtenerDatosComunas'])->name('observador.map.regiones');
+    Route::post('observador/mapa-comuna', [ObservadorController::class, 'obtenerDatosComuna'])->name('observador.map.comuna');
 });
 
 
