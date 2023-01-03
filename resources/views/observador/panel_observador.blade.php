@@ -4,7 +4,7 @@
     <ul class="sidebar-menu">
         <li class="menu-header">Observador</li>
         <li class="dropdown active">
-            <a href="#" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
+            <a href="{{route('observador.index')}}" class="nav-link"><i data-feather="monitor"></i><span>Inicio</span></a>
         </li>
         <li class="dropdown">
             <a href="#" class="menu-toggle nav-link has-dropdown"><i

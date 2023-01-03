@@ -50,24 +50,9 @@
                                     <!-- Tab panes -->
                                     <div class="sidebar-content">
                                         <div class="sidebar-pane" id="home">
-                                            <h1 class="sidebar-header">
-                                                sidebar-v2
-                                                <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
-                                            </h1>
+                                            <h1 class="sidebar-header" id="titulo"> </h1>
 
-                                            <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
-
-                                            <p class="lorem">Lorem ipsum dolor sit amet,
-                                                consetetur sadipscing elitr,
-                                                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-                                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                                                gubergren,
-                                                no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                                                consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                                                aliquyam erat,
-                                                sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                                                gubergren,
-                                                no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                            <p class="lorem" id="informacion"></p>
 
                                         </div>
 
@@ -193,6 +178,7 @@
         }).then(response => {
             return response.json();
         }).then(data => {
+            sidebar.hide();
             for (let i in data.comuna) {
                 var coords = JSON.parse(data.comuna[i].comu_geoubicacion)
                 map.setView([coords.lat, coords.lng], 14);
@@ -208,6 +194,9 @@
                 var marker = L.marker([coords.lat, coords.lng], {
                     icon: myIcon
                 }).addTo(map).on('click', function() {
+                    var info = "Nombre: "+data.comuna[i].comu_nombre+"<br>Region: "+data.comuna[i].regi_codigo;
+                    document.getElementById("titulo").innerHTML = data.comuna[i].comu_nombre;
+                    document.getElementById("informacion").innerHTML = info;
                     sidebar.toggle();
                 });
 
@@ -225,21 +214,21 @@
         sidebar.hide();
     })
 
-    sidebar.on('show', function() {
-        console.log('Sidebar will be visible.');
-    });
+    // sidebar.on('show', function() {
+    //     console.log('Sidebar will be visible.');
+    // });
 
-    sidebar.on('shown', function() {
-        console.log('Sidebar is visible.');
-    });
+    // sidebar.on('shown', function() {
+    //     console.log('Sidebar is visible.');
+    // });
 
-    sidebar.on('hide', function() {
-        console.log('Sidebar will be hidden.');
-    });
+    // sidebar.on('hide', function() {
+    //     console.log('Sidebar will be hidden.');
+    // });
 
-    sidebar.on('hidden', function() {
-        console.log('Sidebar is hidden.');
-    });
+    // sidebar.on('hidden', function() {
+    //     console.log('Sidebar is hidden.');
+    // });
 
     L.DomEvent.on(sidebar.getCloseButton(), 'click', function() {
         console.log('Close button clicked.');
