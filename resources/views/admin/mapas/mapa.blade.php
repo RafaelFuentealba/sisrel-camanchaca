@@ -185,24 +185,81 @@
 
                 var limites = JSON.parse(data.comuna[i].comu_geolimites);
 
+                // icono de la sucursal de camanchaca
                 var myIcon = L.icon({
-                    iconUrl: "{{ asset('public/img/camanchaca.png') }}",
+                    iconUrl: "{{ asset('public/img/icons/factory.png') }}",
                     iconSize: [22, 35],
                     iconAnchor: [12, 24],
                 });
 
+                // icono de los hospitales
+                var meIcon = L.icon({
+                    iconUrl: "{{ asset('public/img/icons/hospital.png') }}",
+                    iconSize: [22, 35],
+                    iconAnchor: [12, 24],
+                });
+
+                // icono de las torres de agua
+                var moIcon = L.icon({
+                    iconUrl: "{{ asset('public/img/icons/watertower.png') }}",
+                    iconSize: [22, 35],
+                    iconAnchor: [12, 24],
+                });
+
+
+                // icono de las juntas de vecino
+                var mrIcon = L.icon({
+                    iconUrl: "{{ asset('public/img/icons/junta-vecino.png') }}",
+                    iconSize: [22, 35],
+                    iconAnchor: [12, 24],
+                });
+
+                // icono de las escuelas
+                var esIcon = L.icon({
+                    iconUrl: "{{ asset('public/img/icons/school.png') }}",
+                    iconSize: [22, 35],
+                    iconAnchor: [12, 24],
+                });
+
+
+
+                // marcas de organizaciones valdivia
+                var marker = L.marker([-39.823134, -73.235254],{icon: meIcon}).addTo(map).on('click', function() {
+                    sidebar.toggle();
+                });
+                var marker = L.marker([-39.810476, -73.246583],{icon: moIcon}).addTo(map).on('click', function() {
+                    sidebar.toggle();
+                });
+                var marker = L.marker([-39.812058, -73.209161],{icon: esIcon}).addTo(map).on('click', function() {
+                    sidebar.toggle();
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 var marker = L.marker([coords.lat, coords.lng], {
                     icon: myIcon
                 }).addTo(map).on('click', function() {
-                    var info = "Nombre: "+data.comuna[i].comu_nombre+"<br>Region: "+data.comuna[i].regi_codigo;
+                    var info = "Nombre: " + data.comuna[i].comu_nombre + "<br>Region: " + data.comuna[i].regi_codigo;
                     document.getElementById("titulo").innerHTML = data.comuna[i].comu_nombre;
                     document.getElementById("informacion").innerHTML = info;
                     sidebar.toggle();
                 });
 
                 var figura = [];
-                for( var j = 0; j < limites.clat.length;j++){
-                    figura.push([limites.clat[j],limites.clng[j]])
+                for (var j = 0; j < limites.clat.length; j++) {
+                    figura.push([limites.clat[j], limites.clng[j]])
                 }
 
                 var polygon = L.polygon(figura).addTo(map)
