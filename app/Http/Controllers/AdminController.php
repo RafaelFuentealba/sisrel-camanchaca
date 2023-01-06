@@ -93,9 +93,9 @@ class AdminController extends Controller
         return redirect()->back()->with('errorActualizacion', 'Ocurrio un error durante la actualizacion');
     }
 
-    public function destroy($rut)
+    public function destroy($rut, $rol)
     {
-        Usuarios::where(['usua_rut' => $rut])->delete();
+        Usuarios::where(['usua_rut' => $rut,'rous_codigo'=> $rol])->delete();
         return redirect()->route('admin.users');
     }
 

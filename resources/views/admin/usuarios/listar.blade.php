@@ -53,7 +53,7 @@
                                                 class="fas fa-edit"></i></a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('admin.borrar', $usuario->usua_rut) }}" method="post">
+                                        <form action="{{ route('admin.borrar', [$usuario->usua_rut, $usuario->rous_codigo]) }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-danger"><i
                                                     class="fas fa-trash"></i></button>

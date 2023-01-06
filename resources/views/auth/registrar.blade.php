@@ -2,127 +2,183 @@
 <html lang="en">
 
 <head>
-    <title>Registro de usuario</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="{{asset('public/css/estilos.css')}}">
-    <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Registro Superadministrador SISREL</title>
+    <link rel="stylesheet" href="{{ asset('public/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/bundles/jquery-selectric/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}">
+    <link rel='shortcut icon' type='image/x-icon' href='{{ asset('public/img/favicon.ico') }}' />
 </head>
 
-<body style="background: url({{ asset('public/img/mar.jpg') }}); background-size:cover; background-repeat:no-repeat;">
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <img class="img" src="{{ asset('public/img/logo_texto.png') }}"></img>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="wrap d-md-flex">
-                        <div class="img"
-                            style="background-image: url({{ asset('public/img/camanchaca.png') }}); width:350px;">
-                        </div>
-                        <div class="login-wrap p-4 p-md-5">
-                            <div class="d-flex">
-                                <div class="w-100">
-                                    <h3 class="mb-4">Sign In</h3>
-                                </div>
+<body class="light light-sidebar theme-white sidebar-gone">
+    <div class="loader"></div>
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h4>Registro</h4>
                             </div>
-                            <form action="{{ route('auth.registrar') }}" class="signin-form" method="POST">
-                                @csrf
-                                @if (Session::has('errorRegistro'))
-                                    <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
-                                        <strong>{{ Session::get('errorRegistro') }}</strong>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
+                            <div class="card-body">
+                                <form action="{{ route('auth.registrar') }}" method="POST">
+                                    @csrf
+
+                                    @if(Session::has('errorRegistro'))
+                                    <div class="alert alert-danger alert-dismissible show fade">
+                                        <div class="alert-body">
+                                            <strong>{{ Session::get('errorRegistro') }}</strong>
+                                            <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                        </div>
                                     </div>
-                                @endif
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese su nombre</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su nombre" required
-                                        / name="nombre" id="nombre">
-                                </div>
+                                    @endif
 
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese su apellido</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su apellido"
-                                        required / name="apellido" id="apellido">
-                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="nombre">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" autocomplete="off" require>
+                                            @if($errors->has('nombre'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('nombre') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="apellido">Apellido</label>
+                                            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" autocomplete="off" require>
+                                            @if($errors->has('apellido'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('apellido') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="run">RUN</label>
+                                            <input type="text" class="form-control" placeholder="Ejemplo: 12345678-K" id="run" name="run" value="{{ old('run') }}" autocomplete="off" require>
+                                            @if($errors->has('run'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('run') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="email">Correo electrónico</label>
+                                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" autocomplete="off" require>
+                                            @if($errors->has('email'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="email">Correo electrónico alternativo</label>
+                                            <input type="email" class="form-control" id="email_alt" name="email_alt" value="{{ old('email') }}" autocomplete="off">
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="Frecuencia">Cargo del responsable:</label>
+                                            <select class="form-control" name="cargo" id="cargo">
+                                                <option value="Jefe de planta">Jefe de planta</option>
+                                                <option value="Encargado de zona">Encargado de zona</option>
+                                                <option value="Administtrador">Administtrador</option>
+                                                <option value="Recursos humanos">Recursos humanos</option>
+                                                <option value="Trabajador de planta">Trabajador de planta</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="Profesion">Ingrese su profesión:</label>
+                                            <input type="text" name="profesion" placeholder="ingeniero o algun otro" id="profesion" class="form-control" />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="label" for="clave">Rol de acceso</label>
+                                            <div class="form-group">
+                                                <select class="form-control" id="rol" name="rol">
+                                                    @foreach ($roles as $rol)
+                                                    <option value="{{ $rol->rous_codigo }}">{{ $rol->rous_nombre }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @if($errors->has('rol'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('rol') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
 
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese su correo</label>
-                                    <input type="email" class="form-control" placeholder="example@gmail.com" required
-                                        / name="email" id="email">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese un correo alternativo </label>
-                                    <input type="email" class="form-control" placeholder="Ingrese un correo"
-                                        title="Este campo es opcional" / name="email_alt" id="email_alt">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese un run</label>
-                                    <input type="text" class="form-control" placeholder="123454678-K" required
-                                        pattern="\d{3,8}-[\d|K]{1}" title="Debe ser un Rut válido" / name="run"
-                                        id="run">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label class="label" for="clave">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Password" required
-                                        id="clave" name="clave">
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label for="cargo" class="label">Cargo del responsable:</label>
-                                    <select class="formbold-form-input" name="cargo" id="cargo" required>
-                                        <option value="Jefe de planta">Jefe de planta</option>
-                                        <option value="Encargado de zona">Encargado de zona</option>
-                                        <option value="Administración">Administración</option>
-                                        <option value="Recursos humanos">Recursos humanos</option>
-                                        <option value="Trabajador de planta">Trabajador de planta</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label class="label" for="rol">Asigne un rol al nuevo usuario </label>
-                                    <select name="rol" id="rol" class="formbold-form-input">
-                                        @foreach ($roles as $rol)
-                                            <option value="{{ $rol->rous_codigo }}">{{ $rol->rous_nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group mb-3">
-                                    <label class="label" for="profesion">Ingrese su profesión </label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su profesion"
-                                        name="profesion" id="profesion">
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit"
-                                        class="form-control btn btn-primary rounded submit px-3">Registrar</button>
-                                </div>
-                            </form>
-
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="clave" class="d-block">Contraseña</label>
+                                            <input type="password" class="form-control" id="clave" name="clave" value="{{ old('clave') }}" autocomplete="off">
+                                            @if($errors->has('clave'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('clave') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="confirmarclave" class="d-block">Confirmar contraseña</label>
+                                            <input type="password" class="form-control" id="confirmarclave" name="confirmarclave" autocomplete="off">
+                                            @if($errors->has('confirmarclave'))
+                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
+                                                <div class="alert-body">
+                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
+                                                    <strong>{{ $errors->first('confirmarclave') }}</strong>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                            Registrar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="mb-4 text-muted text-center">¿Ya estás registrado?<a href="{{ route('auth.ingresar') }}"> Ingresar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <script src="{{asset('public/js/jquery.min.js')}}"></script>
-    <!-- <script src="js/popper.js"></script> -->
-    <script src="{{asset('public/js/main.js')}}"></script>
-
+    <script src="{{ asset('public/js/app.min.js') }}"></script>
+    <script src="{{ asset('public/bundles/jquery-pwstrength/jquery.pwstrength.min.js') }}"></script>
+    <script src="{{ asset('public/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('public/js/page/auth-register.js') }}"></script>
+    <script src="{{ asset('public/js/scripts.js') }}"></script>
+    <script src="{{ asset('public/js/custom.js') }}"></script>
 </body>
 
 </html>
