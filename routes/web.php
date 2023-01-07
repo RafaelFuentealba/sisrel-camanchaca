@@ -35,6 +35,9 @@ Route::middleware('verificar.admin')->group(function () {
     Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
     Route::post('admin/{usua_rut}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
+
+    Route::get('admin/organizaciones-tipos',[AdminController::class,'obetenerOrganizaciones'])->name('admin.listar.tiporg');
+
     Route::get('admin/mapa', [AdminController::class, 'map'])->name("admin.map");
     Route::post('admin/mapa-regiones', [AdminController::class, 'obtenerDatosComunas'])->name('admin.map.regiones');
     Route::post('admin/mapa-comuna', [AdminController::class, 'obtenerDatosComuna'])->name('admin.map.comuna');

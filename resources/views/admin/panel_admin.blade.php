@@ -30,6 +30,7 @@
                 <li><a class="nav-link" href="#">Sedes</a></li>
                 <li><a class="nav-link" href="#">Lineas de acción</a></li>
                 <li><a class="nav-link" href="#">Convenios</a></li>
+                <li><a class="nav-link" href="{{route('admin.listar.tiporg')}}">Organizaciones</a></li>
             </ul>
         </li>
 

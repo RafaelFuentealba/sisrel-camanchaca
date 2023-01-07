@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Comunas;
+use App\Models\TipoOrganizacion;
+use App\Models\Organizaciones;
 
 class AdminController extends Controller
 {
@@ -97,6 +99,49 @@ class AdminController extends Controller
     {
         Usuarios::where(['usua_rut' => $rut])->delete();
         return redirect()->route('admin.users');
+    }
+
+    public function obetenerOrganizaciones()
+    {
+        return view('admin.organizaciones.listar', [
+            'tiposOrganizacion'=>TipoOrganizacion::all(),'organizaciones'=>Organizaciones::all()
+        ]);
+    }
+
+    public function crearTipoOrganizacion(){
+        return view('admin.organizaciones.crear',[
+            'tipos'=>TipoOrganizacion::all()
+        ]);
+    }
+
+    public function guardaTipoOrganizacion(Request $request)
+    {
+        $request->validate(
+            [
+                'nombre'=> 'required|max:50',
+                'icono'=>'required',
+            ],
+            [
+                'nombre.require'=>'El nombre es requerido',
+                'nombre.max'=>'El nombre excede el máximo de carácteres prermitidos',
+                'icono.require'=>'El tipo de organizacion es requerido',
+            ]
+        );
+
+        $tipoOrganizacion = TipoOrganizacion::create([
+            'tior_nombre' => $request->nombre,
+            'tior_ruta_icono' => $request->icono,
+            'tior_creado' => Carbon::now()->toDateString(),
+            'tior_actualizado' => Carbon::now()->toDateString(),
+            'tior_vigente' => 'S',
+            'tior_usuario_mod'=>Session::get('admin')->usua_rut
+        ]);
+
+        if($tipoOrganizacion){
+            return redirect()->route('admin.listar.tiporg');
+        }
+
+        return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
     }
 
     public function graficos()
