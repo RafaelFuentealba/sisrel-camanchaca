@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Roles extends Model
-{
+class Pilares extends Model {
     use HasFactory;
 
-    protected $table = 'roles_usuarios';
+    protected $table = "pilares";
 
     public $timestamps = false;
 
     protected $fillable = [
-        'rous_codigo',
-        'rous_nombre',
-        'rous_creado',
-        'rous_actualizado',
-        'rous_vigente',
-        'rous_usuario_mod',
+        'pila_nombre',
+        'pila_creado',
+        'pila_actualizado',
+        'pila_vigente',
+        'pila_rut_mod',
+        'pila_rol_mod'
     ];
 }

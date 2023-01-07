@@ -20,6 +20,7 @@ class Regiones extends Model
         'regi_creado',
         'regi_actualizado',
         'regi_vigente',
-        'regi_usuario_mod',
+        'regi_rut_mod',
+        'regi_rol_mod'
     ];
 }

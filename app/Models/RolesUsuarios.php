@@ -17,6 +17,7 @@ class RolesUsuarios extends Model {
         'rous_creado',
         'rous_actualizado',
         'rous_vigente',
-        'rous_usuario_mod'
+        'rous_rut_mod',
+        'rous_rol_mod'
     ];
 }

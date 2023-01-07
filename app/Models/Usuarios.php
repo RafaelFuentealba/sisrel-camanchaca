@@ -25,7 +25,8 @@ class Usuarios extends Model
         'usua_creado',
         'usua_actualizado',
         'usua_vigente',
-        'usua_usuario_mod',
+        'usua_rut_mod',
+        'usua_rol_mod',
         //foraneas
         'rous_codigo',
         'unid_codigo'

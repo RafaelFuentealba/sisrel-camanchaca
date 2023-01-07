@@ -12,20 +12,23 @@ class Iniciativas extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'inic_codigo',
         'inic_nombre',
         'inic_objetivo_dec',
         'inic_fecha_inicio',
         'inic_fecha_fin',
-        'frec_codigo',
-        'foim_codigo',
         'inic_nombre_responsable',
         'inic_cargo_responsable',
-        'meca_codigo',
         'inic_inrel',
         'inic_creado',
         'inic_actualizado',
         'inic_vigente',
-        'inic_usuario_mod'
+        'inic_rut_mod',
+        'inic_rol_mod',
+        /* foráneas */
+        'pila_codigo',
+        'frec_codigo',
+        'foim_codigo',
+        'conv_codigo',
+        'meca_codigo',
     ];
 }
