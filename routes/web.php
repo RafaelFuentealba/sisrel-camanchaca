@@ -33,7 +33,7 @@ Route::middleware('verificar.admin')->group(function () {
     Route::post('admin/registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
     Route::get('admin/{usua_rut}/editar', [AdminController::class, 'editar'])->name('admin.editar');
     Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
-    Route::post('admin/{usua_rut}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
+    Route::post('admin/{usua_rut}/{rous_codigo}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
 
     Route::get('admin/organizaciones-tipos',[AdminController::class,'obetenerOrganizaciones'])->name('admin.listar.tiporg');

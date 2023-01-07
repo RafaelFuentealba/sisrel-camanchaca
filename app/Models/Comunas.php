@@ -22,6 +22,7 @@ class Comunas extends Model
         'comu_creado',
         'comu_actualizado',
         'comu_vigente',
-        'comu_usuario_mod',
+        'comu_rut_mod',
+        'comu_rol_mod'
     ];
 }
