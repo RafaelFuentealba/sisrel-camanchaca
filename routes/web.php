@@ -31,8 +31,8 @@ Route::middleware('verificar.admin')->group(function () {
     Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('admin/registrar', [AutenticationController::class, 'registrar'])->name('registrar.formulario');
     Route::post('admin/registrar', [AutenticationController::class, 'guardarRegistro'])->name('auth.registrar');
-    Route::get('admin/{usua_rut}/editar', [AdminController::class, 'editar'])->name('admin.editar');
-    Route::put('admin/{usua_rut}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
+    Route::get('admin/{usua_rut}/{rous_codigo}/editar', [AdminController::class, 'editar'])->name('admin.editar');
+    Route::put('admin/{usua_rut}/{rous_codigo}/editar', [AdminController::class, 'actulizarUsuario'])->name('admin.update');
     Route::post('admin/{usua_rut}/{rous_codigo}/borrar', [AdminController::class, 'destroy'])->name('admin.borrar');
 
 

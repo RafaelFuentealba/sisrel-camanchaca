@@ -57,10 +57,8 @@
                         </ul>
                     </div>
                     <ul class="navbar-nav navbar-right">
-                        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                        <!-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
                                 class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
-                                <span class="badge headerBadge1">
-                                    6 </span> </a>
                             <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
                                 <div class="dropdown-header">
                                     Messages
@@ -79,7 +77,7 @@
                                     <div class="float-right">
                                         <a href="javascript:void(0)">Mark All As Read</a>
                                     </div>
-                        </li>
+                        </li> -->
                         <li class="dropdown"><a href="#" data-toggle="dropdown"
                                 class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
                                     src="{{ asset('public/assets/img/user.png') }}" class="user-img-radious-style">
@@ -95,10 +93,10 @@
                                     @endif
 
                                 </div>
-                                <a href="profile.html" class="dropdown-item has-icon"> <i
+                                <a href="#" class="dropdown-item has-icon"> <i
                                         class="far
                                             fa-user"></i> Perfil
-                                </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+                                </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                                     Activities
                                 </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                                     Configuraciones

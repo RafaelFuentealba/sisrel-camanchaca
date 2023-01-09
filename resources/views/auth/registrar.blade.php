@@ -40,7 +40,7 @@
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="nombre">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" autocomplete="off" require>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" autocomplete="off" required>
                                             @if($errors->has('nombre'))
                                             <div class="alert alert-warning alert-dismissible show fade mt-2">
                                                 <div class="alert-body">
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="apellido">Apellido</label>
-                                            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" autocomplete="off" require>
+                                            <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" autocomplete="off" required>
                                             @if($errors->has('apellido'))
                                             <div class="alert alert-warning alert-dismissible show fade mt-2">
                                                 <div class="alert-body">
@@ -66,7 +66,7 @@
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="run">RUN</label>
-                                            <input type="text" class="form-control" placeholder="Ejemplo: 12345678-K" id="run" name="run" value="{{ old('run') }}" autocomplete="off" require>
+                                            <input type="text" class="form-control" placeholder="Ejemplo: 12345678-K" id="run" name="run" value="{{ old('run') }}" autocomplete="off" required>
                                             @if($errors->has('run'))
                                             <div class="alert alert-warning alert-dismissible show fade mt-2">
                                                 <div class="alert-body">
@@ -78,24 +78,13 @@
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="email">Correo electrónico</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" autocomplete="off" require>
-                                            @if($errors->has('email'))
-                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
-                                                <div class="alert-body">
-                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </div>
-                                            </div>
-                                            @endif
+                                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" autocomplete="off" required>
+                    
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="email">Correo electrónico alternativo</label>
                                             <input type="email" class="form-control" id="email_alt" name="email_alt" value="{{ old('email') }}" autocomplete="off">
-                                            <div class="alert alert-warning alert-dismissible show fade mt-2">
-                                                <div class="alert-body">
-                                                    <button class="close" data-dismiss="alert"><span>&times;</span></button>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="Frecuencia">Cargo del responsable:</label>
@@ -112,7 +101,7 @@
                                             <input type="text" name="profesion" placeholder="ingeniero o algun otro" id="profesion" class="form-control" />
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label class="label" for="clave">Rol de acceso</label>
+                                            <label class="label" for="clave" required>Rol de acceso</label>
                                             <div class="form-group">
                                                 <select class="form-control" id="rol" name="rol">
                                                     @foreach ($roles as $rol)
@@ -133,7 +122,7 @@
 
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="clave" class="d-block">Contraseña</label>
+                                            <label for="clave" class="d-block" required>Contraseña</label>
                                             <input type="password" class="form-control" id="clave" name="clave" value="{{ old('clave') }}" autocomplete="off">
                                             @if($errors->has('clave'))
                                             <div class="alert alert-warning alert-dismissible show fade mt-2">
