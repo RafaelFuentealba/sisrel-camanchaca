@@ -23,6 +23,7 @@ class Organizaciones extends Model
         'orga_creado',
         'orga_actualizado',
         'orga_vigente',
-        'orga_usuario_mod',
+        'orga_rut_mod',
+        'orga_rol_mod'
     ];
 }
