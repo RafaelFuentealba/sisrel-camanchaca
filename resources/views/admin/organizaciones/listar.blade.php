@@ -34,7 +34,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $organizacion->orga_creado }}</td>
-                                    <td>{{ $organizacion->orga_usuario_mod }}</td>
+                                    <td>{{ $organizacion->orga_rut_mod }}</td>
                                     <td>
                                         {{-- <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
                                             class="fas fa-edit"></i></a> --}}
@@ -61,7 +61,7 @@
             <div class="card-header">
                 <h4>Listado tipos de organizaciones</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('registrar.formulario') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo
+                    <a href="{{ route('admin.crear.tiporg') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo
                         tipo </a>
                 </div>
             </div>
@@ -73,6 +73,7 @@
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Vigente</th>
+                                <th>Icono</th>
                                 <th>Creado</th>
                                 <th>Modificado por</th>
                                 <th>Editar</th>
@@ -89,8 +90,11 @@
                                             <p class="badge badge-danger"><strong>Inactivo</strong></p>
                                         @endif
                                     </td>
+                                    <td>
+                                        <img src="{{asset($tipo->tior_ruta_icono)}}" alt="">
+                                    </td>
                                     <td>{{ $tipo->tior_creado }}</td>
-                                    <td>{{ $tipo->tior_usuario_mod }}</td>
+                                    <td>{{ $tipo->tior_rut_mod }}</td>
                                     <td>
                                         {{-- <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
                                                 class="fas fa-edit"></i></a> --}}
