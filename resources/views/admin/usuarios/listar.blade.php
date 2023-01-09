@@ -49,7 +49,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
+                                        <a href="{{ route('admin.editar', [$usuario->usua_rut, $usuario->rous_codigo]) }}" class="btn btn-info"><i
                                                 class="fas fa-edit"></i></a>
                                     </td>
                                     <td>

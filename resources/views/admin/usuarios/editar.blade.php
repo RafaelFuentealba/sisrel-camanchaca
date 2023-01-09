@@ -34,7 +34,7 @@
                                     <h3 class="mb-4">Sign In</h3>
                                 </div>
                             </div>
-                            <form action="{{ route('admin.update', $usuario->usua_rut) }}" class="signin-form"
+                            <form action="{{ route('admin.update', [$usuario->usua_rut,$usuario->rous_codigo]) }}" class="signin-form"
                                 method="POST">
                                 @method('PUT')
                                 @csrf
@@ -92,19 +92,7 @@
                                         value="{{ $usuario->usua_email_alternativo }}">
                                 </div>
 
-                                @if ($errors->has('run'))
-                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
-                                        role="alert">
-                                        <strong>{{ $errors->first('run') }}</strong>
-
-                                    </div>
-                                @endif
-                                <div class="form-group mb-3">
-                                    <label class="label" for="name">Ingrese un run</label>
-                                    <input type="text" class="form-control" placeholder="123454678-K" required
-                                        pattern="\d{3,8}-[\d|K]{1}" title="Debe ser un Rut válido" / name="run"
-                                        id="run" value="{{ $usuario->usua_rut }}">
-                                </div>
+                               
 
                                 @if ($errors->has('clave'))
                                     <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
@@ -139,21 +127,8 @@
                                     </select>
                                 </div>
 
-                                @if ($errors->has('rol'))
-                                    <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"
-                                        role="alert">
-                                        <strong>{{ $errors->first('rol') }}</strong>
-
-                                    </div>
-                                @endif
-                                <div class="form-group mb-3">
-                                    <label class="label" for="rol">Asigne un rol al nuevo usuario </label>
-                                    <select name="rol" id="rol" class="formbold-form-input">
-                                        @foreach ($roles as $rol)
-                                            <option value="{{ $rol->rous_codigo }}">{{ $rol->rous_nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                
+                               
 
                                 @if ($errors->has('vigente'))
                                     <div class="alert alert-warning alert-dismissible fade show mt-2 mb-2"

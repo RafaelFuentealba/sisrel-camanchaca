@@ -30,14 +30,13 @@ class AdminController extends Controller
     }
 
 
-    public function editar($rut)
+    public function editar($rut,$rol)
     {
-        $usuario = Usuarios::where(['usua_rut' => $rut])->first();
-        $roles = DB::table('roles_usuarios')->select('rous_codigo', 'rous_nombre')->limit(3)->orderBy('rous_codigo')->get();
-        return view('admin.usuarios.editar', compact('roles', 'usuario'));
+        $usuario = Usuarios::where(['usua_rut' => $rut,'rous_codigo'=> $rol])->first();
+        return view('admin.usuarios.editar', compact( 'usuario'));
     }
 
-    public function actulizarUsuario(Request $request, $rut)
+    public function actulizarUsuario(Request $request, $rut,$rol)
     {
         $validacion = $request->validate(
             [
@@ -45,11 +44,14 @@ class AdminController extends Controller
                 'apellido' => 'required|max:100',
                 'email' => 'required|max:100',
                 'email_alt' => 'max:100',
-                'run' => 'required',
                 'cargo' => 'required',
-                'rol' => 'required',
+                
+                // 'run' => 'required',
+                // 'rol' => 'required',
+                
                 'vigente' => 'required',
                 'profesion' => 'max:100',
+                
             ],
             [
                 'nombre.required' => 'El nombre para el usuario es requerido',
@@ -59,10 +61,11 @@ class AdminController extends Controller
                 'email.required' => 'El email para el usuario es requerido',
                 'email.max' => 'El email asignado supera el máximo de carácteres permitidos',
                 'email_alt.max' => 'El email alternativo asignado supera el máximo de carácteres permitidos',
-                'run.required' => 'El run para el usuario es requerido',
+                // 'run.required' => 'El run para el usuario es requerido',
                 'cargo.required' => 'El usuario necesita tener un cargo asignado',
                 'vigente.required' => 'El usuario debe de tener una vigencia',
                 'profesion.max' => 'La profesion super el máximo de caracteres permitidos',
+                
             ]
         );
 
@@ -71,8 +74,8 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($validacion)->withInput();
         }
 
-        $usuario = Usuarios::where(['usua_rut' => $rut])->update([
-            'usua_rut' => Str::upper($request->run),
+        $usuario = Usuarios::where(['usua_rut' => $rut,'rous_codigo'=>$rol])->update([
+            'usua_rut' => $rut,
             'usua_email' => $request->email,
             'usua_email_alternativo' => $request->email_alt,
             // hash para ocultar la clave
@@ -83,8 +86,9 @@ class AdminController extends Controller
             'usua_profesion' => $request->profesion,
             'usua_actualizado' => Carbon::now()->toDateString(),
             'usua_vigente' => $request->vigente,
-            'usua_usuario_mod' => Session::get('admin')->usua_rut,
-            'rous_codigo' => $request->rol,
+            'usua_rut_mod' => Session::get('admin')->usua_rut,
+            'usua_rol_mod'=>Session::get('admin')->rous_codigo,
+            'rous_codigo' => $rol,
             'unid_codigo' => 1,
         ]);
 
