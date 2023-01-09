@@ -38,7 +38,7 @@
                                     <td>
                                         {{-- <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
                                             class="fas fa-edit"></i></a> --}}
-                                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                        {{-- <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a> --}}
                                     </td>
                                     <td>
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -96,17 +96,15 @@
                                     <td>{{ $tipo->tior_creado }}</td>
                                     <td>{{ $tipo->tior_rut_mod }}</td>
                                     <td>
-                                        {{-- <a href="{{ route('admin.editar', $usuario->usua_rut) }}" class="btn btn-info"><i
-                                                class="fas fa-edit"></i></a> --}}
-                                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('admin.editar.tiporg', $tipo->tior_codigo) }}" class="btn btn-info"><i
+                                                class="fas fa-edit"></i></a>
                                     </td>
                                     <td>
-                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                        {{-- <form action="{{ route('admin.borrar', $usuario->usua_rut) }}" method="post">
+                                        <form action="{{ route('admin.borrar.tiporg',$tipo->tior_codigo ) }}" method="post">
                                             @csrf
                                             <button type="submit" class="btn btn-danger"><i
                                                     class="fas fa-trash"></i></button>
-                                        </form> --}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

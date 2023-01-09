@@ -81,7 +81,7 @@ class AdminController extends Controller
             'usua_apellido' => $request->apellido,
             'usua_cargo' => $request->cargo,
             'usua_profesion' => $request->profesion,
-            'usua_actualizado' => Carbon::now()->toDateString(),
+            'usua_actualizado' => Carbon::now()->format('Y-m-d H:i:s'),
             'usua_vigente' => $request->vigente,
             'usua_usuario_mod' => Session::get('admin')->usua_rut,
             'rous_codigo' => $request->rol,
@@ -97,20 +97,22 @@ class AdminController extends Controller
 
     public function destroy($rut, $rol)
     {
-        Usuarios::where(['usua_rut' => $rut,'rous_codigo'=> $rol])->delete();
+        Usuarios::where(['usua_rut' => $rut, 'rous_codigo' => $rol])->delete();
         return redirect()->route('admin.users');
     }
 
     public function obetenerOrganizaciones()
     {
         return view('admin.organizaciones.listar', [
-            'tiposOrganizacion'=>TipoOrganizacion::all(),'organizaciones'=>Organizaciones::all()
+            'tiposOrganizacion' => TipoOrganizacion::all(),
+            'organizaciones' => Organizaciones::all()
         ]);
     }
 
-    public function crearTipoOrganizacion(){
-        return view('admin.organizaciones.crear_tipo',[
-            'tipos'=>TipoOrganizacion::all()
+    public function crearTipoOrganizacion()
+    {
+        return view('admin.organizaciones.crear_tipo', [
+            'tipos' => TipoOrganizacion::all()
         ]);
     }
 
@@ -118,33 +120,83 @@ class AdminController extends Controller
     {
         $request->validate(
             [
-                'nombre'=> 'required|max:50',
-                'icono'=>'required',
+                'nombre' => 'required|max:50',
+                'icono' => 'required',
             ],
             [
-                'nombre.require'=>'El nombre es requerido',
-                'nombre.max'=>'El nombre excede el máximo de carácteres prermitidos',
-                'icono.require'=>'El tipo de organizacion es requerido',
+                'nombre.require' => 'El nombre es requerido',
+                'nombre.max' => 'El nombre excede el máximo de carácteres prermitidos',
+                'icono.require' => 'El tipo de organizacion es requerido',
             ]
         );
 
         $tipoOrganizacion = TipoOrganizacion::create([
             'tior_nombre' => $request->nombre,
             'tior_ruta_icono' => $request->icono,
-            'tior_creado' => Carbon::now()->toDateString(),
-            'tior_actualizado' => Carbon::now()->toDateString(),
+            'tior_creado' => Carbon::now()->format('Y-m-d H:i:s'),
+            'tior_actualizado' => Carbon::now()->format('Y-m-d H:i:s'),
             'tior_vigente' => 'S',
-            'tior_rut_mod'=>Session::get('admin')->usua_rut,
-            'tior_rol_mod'=>Session::get('admin')->rous_codigo
+            'tior_rut_mod' => Session::get('admin')->usua_rut,
+            'tior_rol_mod' => Session::get('admin')->rous_codigo
         ]);
 
-        if($tipoOrganizacion){
+        if ($tipoOrganizacion) {
             return redirect()->route('admin.listar.org');
         }
 
         return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
     }
 
+    public function editarTipoOrganizacion($tipo)
+    {
+        return view('admin.organizaciones.editar_tipo', [
+            'tiporg' => TipoOrganizacion::where(['tior_codigo' => $tipo])->first()
+        ]);
+    }
+
+    public function actualizarTipoOrganizacion(Request $request, $tiporg)
+    {
+        $validacion = $request->validate(
+            [
+                'nombre' => 'required|max:50',
+                'icono' => 'required',
+                'vigente' => 'required'
+            ],
+            [
+                'nombre.require' => 'El nombre es requerido',
+                'nombre.max' => 'El nombre excede el máximo de carácteres prermitidos',
+                'icono.require' => 'El tipo de organizacion es requerido',
+                'vigente.require' => 'El estado del icono Es requerido',
+            ]
+        );
+
+        if (!$validacion) {
+
+            return redirect()->back()->withErrors($validacion)->withInput();
+        }
+
+        $tiporganizacion = TipoOrganizacion::where(['tior_codigo' => $tiporg])->update([
+            'tior_nombre' => $request->nombre,
+            'tior_ruta_icono' => $request->icono,
+            'tior_actualizado' => Carbon::now()->format('Y-m-d H:i:s'),
+            'tior_rut_mod' => Session::get('admin')->usua_rut,
+            'tior_rol_mod' => Session::get('admin')->rous_codigo,
+            'tior_vigente' => $request->vigente
+
+        ]);
+
+        if ($tiporganizacion) {
+            return redirect()->route('admin.listar.org');
+        }
+
+        return redirect()->back()->with('errorActualizacion', 'Ocurrio un error durante la actualizacion');
+    }
+
+    public function eliminarOrganizacionTipo($tipo)
+    {
+        TipoOrganizacion::where(['tior_codigo' => $tipo])->delete();
+        return redirect()->route('admin.listar.org');
+    }
     public function graficos()
     {
         return view('admin.charts.graficos');
@@ -160,18 +212,19 @@ class AdminController extends Controller
     public function obtenerDatosComunas(Request $request)
     {
         if (isset($request->region)) {
-            $comunas = Comunas::all()->where('regi_codigo',$request->region);
+            $comunas = Comunas::all()->where('regi_codigo', $request->region);
             return response()->json(['comunas' => $comunas, 'success' => true]);
         } else {
             return response()->json(['success' => false]);
         }
     }
 
-    public function obtenerDatosComuna(Request $request){
-        if(isset($request->comunas)){
+    public function obtenerDatosComuna(Request $request)
+    {
+        if (isset($request->comunas)) {
             $comuna = Comunas::all()->where('comu_codigo', $request->comunas);
             return response()->json(['comuna' => $comuna, 'success' => true]);
-        }else{
+        } else {
             return response()->json(['success' => false]);
         }
     }

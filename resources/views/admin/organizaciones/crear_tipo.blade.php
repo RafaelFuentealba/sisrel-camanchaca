@@ -97,22 +97,12 @@
                                                     </span>
                                                 </label>
                                             </div>
-                                            {{-- <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">
-                                                        <img src="{{asset('public/img/icons/watertower.png')}}" alt="hospital">
-                                                    </div>
-                                                </div>
-                                                <select name="icono" id="icono" class="formbold-form-input">
-                                                    <option value="public/img/icons/hospital.png">Icono-hospital</option>
-                                                </select>
-                                            </div> --}}
                                             @if ($errors->has('icono'))
                                                 <div class="alert alert-warning alert-dismissible show fade mt-2">
                                                     <div class="alert-body">
                                                         <button class="close"
                                                             data-dismiss="alert"><span>&times;</span></button>
-                                                        <strong>{{ $errors->first('apellido') }}</strong>
+                                                        <strong>{{ $errors->first('icono') }}</strong>
                                                     </div>
                                                 </div>
                                             @endif

@@ -39,6 +39,9 @@ Route::middleware('verificar.admin')->group(function () {
     Route::get('admin/organizaciones',[AdminController::class,'obetenerOrganizaciones'])->name('admin.listar.org');
     Route::get('admin/organizaciones/crear-tipo', [AdminController::class, 'crearTipoOrganizacion'])->name('admin.crear.tiporg');
     Route::post('admin/organizaciones/crear-tipo', [AdminController::class, 'guardaTipoOrganizacion'])->name('admin.guardar.tiporg');
+    Route::get('admin/organizaciones/{tior_codigo}/editar-tipo', [AdminController::class, 'editarTipoOrganizacion'])->name('admin.editar.tiporg');
+    Route::put('admin/organizacione/{tior_codigo}/editar-tipo', [AdminController::class, 'actualizarTipoOrganizacion'])->name('admin.actualizar.tiporg');
+    Route::post('admid/organizaciones/{tior_codigo}/eliminar-tipo',[AdminController::class,'eliminarOrganizacionTipo'])->name('admin.borrar.tiporg');
 
     Route::get('admin/mapa', [AdminController::class, 'map'])->name("admin.map");
     Route::post('admin/mapa-regiones', [AdminController::class, 'obtenerDatosComunas'])->name('admin.map.regiones');
