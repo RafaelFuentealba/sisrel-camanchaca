@@ -109,7 +109,7 @@ class AdminController extends Controller
     }
 
     public function crearTipoOrganizacion(){
-        return view('admin.organizaciones.crear',[
+        return view('admin.organizaciones.crear_tipo',[
             'tipos'=>TipoOrganizacion::all()
         ]);
     }
@@ -134,11 +134,12 @@ class AdminController extends Controller
             'tior_creado' => Carbon::now()->toDateString(),
             'tior_actualizado' => Carbon::now()->toDateString(),
             'tior_vigente' => 'S',
-            'tior_usuario_mod'=>Session::get('admin')->usua_rut
+            'tior_rut_mod'=>Session::get('admin')->usua_rut,
+            'tior_rol_mod'=>Session::get('admin')->rous_codigo
         ]);
 
         if($tipoOrganizacion){
-            return redirect()->route('admin.listar.tiporg');
+            return redirect()->route('admin.listar.org');
         }
 
         return redirect()->back()->with('errorRegistro', 'Ocurrio un error durante el registro');
@@ -160,7 +161,6 @@ class AdminController extends Controller
     {
         if (isset($request->region)) {
             $comunas = Comunas::all()->where('regi_codigo',$request->region);
-            // $comunas = DB::table('comunas')->where('regi_codigo', $request->region)->get();
             return response()->json(['comunas' => $comunas, 'success' => true]);
         } else {
             return response()->json(['success' => false]);

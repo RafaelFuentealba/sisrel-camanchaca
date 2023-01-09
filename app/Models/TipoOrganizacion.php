@@ -20,6 +20,7 @@ class TipoOrganizacion extends Model
         'tior_creado',
         'tior_actualizado',
         'tior_vigente',
-        'tior_usuario_mod'
+        'tior_rut_mod',
+        'tior_rol_mod'
     ];
 }
