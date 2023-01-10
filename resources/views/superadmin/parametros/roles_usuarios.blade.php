@@ -57,7 +57,7 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Roles de usuario en el sistema</h4>
+                        <h4>Roles de usuario</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -125,7 +125,7 @@
                         @csrf
                         
                         <div class="form-group">
-                            <label>Nombre de rol</label>
+                            <label>Nombre</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">

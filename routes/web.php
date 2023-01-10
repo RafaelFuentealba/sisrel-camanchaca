@@ -79,4 +79,9 @@ Route::middleware('verificar.superadmin')->group(function () {
 
     Route::get('superadmin/listar-roles', [SuperadminController::class, 'listarRoles'])->name('superadmin.listar.roles');
     Route::put('superadmin/actualizar-rol/{rous_codigo}', [SuperadminController::class, 'actualizarRol'])->name('superadmin.actualizar.rol');
+	
+	Route::get('listar-infraestructura', [TipoInfraestructuraController::class, 'index'])->name('superadmin.infra.index');
+    Route::post('guardar-infraestructura', [TipoInfraestructuraController::class, 'store'])->name('superadmin.infra.store');
+    Route::put('actualizar-infraestructura/{tiin_codigo}', [TipoInfraestructuraController::class, 'update'])->name('superadmin.infra.update');
+    Route::delete('eliminar-infraestructura/{tiin_codigo}', [TipoInfraestructuraController::class, 'destroy'])->name('superadmin.infra.destroy');
 });

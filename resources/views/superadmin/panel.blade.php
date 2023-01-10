@@ -117,11 +117,11 @@
                                 <li><a class="nav-link" href="{{ route('superadmin.listar.usuarios') }}">Listar</a></li>
                             </ul>
                         </li>
-                        <li class="{{ Route::is('superadmin.listar.roles') ? 'dropdown active' : 'dropdown' }}">
+                        <li class="{{ Route::is('superadmin.listar.roles') || Route::is('superadmin.infra.index') ? 'dropdown active' : 'dropdown' }}">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Parámetros</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{{ route('superadmin.listar.roles') }}">Roles</a></li>
-                                <li><a class="nav-link" href="javascript:void(0)">Unidades</a></li>
+                                <li><a class="nav-link" href="{{ route('superadmin.infra.index') }}">Tipo infraestructura</a></li>
                                 <li><a class="nav-link" href="djavascript:void(0)">Otro</a></li>
                             </ul>
                         </li>
